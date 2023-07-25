@@ -1,3 +1,5 @@
+// here I am testing new/this/for (.. of ..)
+
 function model(color, text, ID) {
     this.color = color;
     this.text = text;
