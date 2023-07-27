@@ -1,14 +1,24 @@
 {
     "users": [
         {
-            "name": "adam",
+            "name": "Adam",
             "id": 1,
-            "dateOfInscription": "25/07/23"
+            "accountDateCreation": "25/07/23" 
         },
         {
-            "name": "mch",
+            "name": "Laurent",
             "id": 2,
-            "dateOfInscription": "27/07/23"
+            "accountDateCreation": "25/07/23" 
+        },
+        {
+            "name": "Naima",
+            "id": 3,
+            "accountDateCreation": "25/07/23" 
+        },
+        {
+            "name": "Mch",
+            "id": 4,
+            "accountDateCreation": "26/07/23" 
         }
     ]
 }

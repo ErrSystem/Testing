@@ -1,10 +1,12 @@
-let _set = new Set();
 fetch('log.json')
-.then(reponse => reponse.json())
+.then(response => response.json())
 .then(json => {
-    json.users.forEach(user => {
-        _set.add(user.name);
+    json.users.forEach( user => {
+        if (user.accountDateCreation == "25/07/23"){
+            console.log('VIP: '+ user.name+', ID: '+ user.id);
+        }
+        else {
+            console.log(user.name+', ID: '+user.id)
+        }
     })
-});
-
-console.log(_set);
+})
