@@ -1,16 +1,7 @@
-class car {
-    constructor(color, form, year) {
-        this.color = color;
-        this.form = form;
-        this.year = year;
-    }
-}
-
-let Porsche = new car('Red', 'Spider', 2023);
-
-let PC = {
-        Processor: 'Intel 9 2022',
-        RAM: '32 Giga Bytes',
-    }
-
-console.log(Porsche, PC)
+fetch('log.json')
+.then(reponse => reponse.json())
+.then(json => {
+    let _set = new Set(json.users.at(0, json.users.length - 1));
+    json.users.every(_set.add())
+    _set.forEach(console.log(_set.name))
+});
