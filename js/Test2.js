@@ -12,6 +12,12 @@ document.addEventListener('keypress', event => {
                 document.getElementById('Output').innerHTML = Output; // adds Output's variable value to the output located in HTML
                 input = ''; // clears the input            
             }
+            else if (input.includes('@') && input.includes('.')){
+                alert('there is no account assigned to this email');
+            }
+            else {
+                alert('Not an email');
+            }
         })
     }
 
