@@ -9,3 +9,7 @@ fetch('users.json')
 })
 .then(data => console.log(data))
 .catch(error => console.log(error))
+
+let promise = () => {
+
+}
