@@ -1,7 +1,11 @@
-
-fetch('log.json')
-.then(response => response.json())
-.then(JSON_File => {
-    let Obj = JSON_File.users;
-    console.log(Obj);
+fetch('users.json')
+.then(response => {
+    if (response.ok) {
+        console.log('Success');
+    }
+    else {
+        console.log('Error')
+    }
 })
+.then(data => console.log(data))
+.catch(error => console.log(error))

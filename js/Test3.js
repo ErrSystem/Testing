@@ -1,20 +1,14 @@
-let email = 'laurent@gmail.com';
-
-fetch('log.json')
-.then(response => response.json())
-.then(JSON_File => {
-    if (find_system(JSON_File.users)){
-        console.log('yeah')
+fetch("users.json")
+.then(res => {
+    if (res.ok) {
+        console.log('Yeahhh')
+    }
+    else{
+        console.log('Error')
     }
 })
-
-let find_system = value => {
-    for (Obj of value) {
-        if (Obj.email == email) {
-            return true
-        }
-        else{
-            console.log('nope')
-        }
-    }
-}
+.then(data => {
+    let Info = data[0];
+    console.log(Info)
+})
+.catch(error => console.log(error))
