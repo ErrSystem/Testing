@@ -1,8 +1,8 @@
-const randomNumber = number => Math.random() * number;
-
-const Ask = () => {
-    let numberQuestion = prompt('choose a number');
-    console.log(randomNumber(numberQuestion));
+let num = prompt('write a number');
+function isEven () {
+  if (num % 2 === 0){
+    return true;
+  }
+  return false;
 }
-
-window.onload = Ask;
+console.log(isEven())
