@@ -10,48 +10,75 @@ html{
 }
 
 body {
-    background: linear-gradient(320deg, rgb(184, 48, 48), rgb(47, 47, 145));
+    background: linear-gradient(320deg, rgb(48, 184, 48), rgb(47, 47, 145));
+    font-family: 'Dosis', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: inherit;
 }
 
-#output {
-    margin: 25px 20px 30px 20px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-}
-
 #wrapper{
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
+    border-radius: 16px;
     height: 450px;
     width: 300px;
-    border-radius: 16px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.726);
+    flex-basis: 290px;
+    padding: 10px 15px;
+}
+
+#output {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    margin: 25px 20px 30px 20px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    border-radius: 5px;
+    text-align: right;
+    padding: 10px 10px;
+    font-size: 18px;
+}
+
+.calc-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
 }
 
 .calc-button {
-    background-color: white;
-    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    font-size: 18px;
     border-radius: 3px;
-    padding: 15px;
-    margin: 10px -4px 10px 26px;
+    flex-basis: 20%;
+    height: 50px;
+    width: 50px;
+    transition: all ease 0.95s;
+}
+
+.calc-button:last-child {
+    background-color: brown;
+    color: white;
+}
+
+.calc-button:hover {
+    background-color: inherit;
+    transition: all ease 0.95s;
+}
+
+.calc-button:active {
+    background-color: rgb(255, 255, 0)
 }
 
 .double {
-    padding-right: 45px;
-    padding-left: 41px;
+    flex-basis: 47%;
 }
 
 .triple {
-    padding-right: 80px;
-    padding-left: 80px;
+    flex-basis: 74%;
 }
