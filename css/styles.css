@@ -9,23 +9,49 @@ html{
     padding: 0;
 }
 
+body {
+    background: linear-gradient(320deg, rgb(184, 48, 48), rgb(47, 47, 145));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
 #output {
-    margin: 15px
+    margin: 25px 20px 30px 20px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 #wrapper{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.75);
     border: 1px solid black;
-    height: 400px;
-    width: 250px;
+    height: 450px;
+    width: 300px;
     border-radius: 16px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.322);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.726);
 }
 
-button {
+.calc-button {
     background-color: white;
     border: 1px solid black;
     border-radius: 3px;
     padding: 15px;
-    margin: 10px 10px 10px 9px;
+    margin: 10px -4px 10px 26px;
+}
+
+.double {
+    padding-right: 45px;
+    padding-left: 41px;
+}
+
+.triple {
+    padding-right: 80px;
+    padding-left: 80px;
 }
