@@ -14,14 +14,14 @@ let operation = {
 }
 // To verify if its an operator
 let operators = value => {
-    let operatorsValues =  ['-' , 'x' , '÷' , '+', '/'];
+    let operatorsValues =  ['-' , '*' , '+', '/',];
     let counter = 0;
     for (operator of operatorsValues){
         counter++;
         if (operator == value){
             return true;
         }
-        else if (counter == 5 && operator != value) {
+        else if (counter == 4 && operator != value) {
             return false;
         }
     }
@@ -58,7 +58,7 @@ let symbols = value => {
 let getValues = () => {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click' , function() {
-            let button_value = buttons[i].innerHTML;
+            let button_value = buttons[i].innerHTML.replace('x', '*').replace('÷', '/');
             if (numbers(button_value) && verification.isNumberAllowed || operators(button_value) && verification.isOperatorAllowed || symbols(button_value)){
                 if (output.innerHTML.trim() == '0' && !symbols(button_value)){
                     output.innerHTML = buttons[i].innerHTML
@@ -86,16 +86,16 @@ let getValues = () => {
                     }
                     else if (operators(button_value) && verification.maxOperatorsReached){
                         output.innerHTML = equal();
-                        operation.firstNumber = equal();
+                        operation.firstNumber = output.innerHTML;
                         operation.operator = '';
                         operation.secondNumber = '';
                     }
                     else if (symbols(button_value)){
                         switch (button_value) {
-                            case 'Enter':
+                            case '=':
                                 if (!verification.stillFirstNumber && verification.isOperatorAllowed){
                                     output.innerHTML = equal();
-                                    operation.firstNumber = equal();
+                                    operation.firstNumber = output.innerHTML;
                                     operation.operator = '';
                                     operation.secondNumber = '';
                                 }
@@ -121,7 +121,7 @@ let getValues = () => {
     }
 }
 // adds key events 
-window.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', event => {
     if (numbers(event.key) && verification.isNumberAllowed || operators(event.key) && verification.isOperatorAllowed || symbols(event.key)){
         if (output.innerHTML.trim() === '0' && !symbols(event.key)){
             output.innerHTML = event.key
@@ -140,16 +140,17 @@ window.addEventListener('keydown', function(event) {
                 operation.secondNumber += event.key;
             }
             else if (operators(event.key) && !verification.maxOperatorsReached){
+                let operatorValue = event.key;
                 verification.isOperatorAllowed = false;
                 verification.maxOperatorsReached = true;
                 verification.stillFirstNumber = false;
                 operation.operator += event.key;
                 verification.isNumberAllowed = true;
-                output.innerHTML += event.key;
+                output.innerHTML += operatorValue.replace('/', '÷').replace('*', 'x');
             }
             else if (operators(event.key) && verification.maxOperatorsReached){
                 output.innerHTML = equal();
-                operation.firstNumber = equal();
+                operation.firstNumber = output.innerHTML;
                 operation.operator = '';
                 operation.secondNumber = '';
                 verification.isOperatorAllowed = true;
@@ -157,20 +158,19 @@ window.addEventListener('keydown', function(event) {
                 verification.maxOperatorsReached = false;
             }
             else if (symbols(event.key)){
-                if (event.key == 'Enter'){
-                    console.log('eweww')
+                switch (event.key) {
+                    case 'Enter': 
                     if (!verification.stillFirstNumber && verification.isOperatorAllowed) {
                         output.innerHTML = equal();
-                        operation.firstNumber = equal();
+                        operation.firstNumber = output.innerHTML;
                         operation.operator = '';
                         operation.secondNumber = '';
                     }
-                }
-                switch (event.key) {
+                    break;
                     case 'Backspace':
                         console.log('erase');
                     break;
-                    case 'C':
+                    case 'Delete':
                         output.innerHTML = '0';
                         operation.firstNumber = '';
                         operation.operator = '';
@@ -188,7 +188,6 @@ window.addEventListener('keydown', function(event) {
 
 // equal function
 let equal = () => {
-    console.log('zezez');
     let firstNumber = parseFloat(operation.firstNumber);
     let secondNumber = parseFloat(operation.secondNumber);
     verification.isOperatorAllowed = true;
@@ -201,10 +200,8 @@ let equal = () => {
         case '-':
             return (firstNumber - secondNumber).toFixed(2);
         break;
-        case 'x':
+        case '*':
             return (firstNumber * secondNumber).toFixed(2);
-        case '÷':
-            return (firstNumber / secondNumber).toFixed(2);
         break;
         case '/':
             return (firstNumber / secondNumber).toFixed(2);
