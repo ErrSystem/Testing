@@ -60,7 +60,7 @@ let getValues = () => {
         buttons[i].addEventListener('click' , function() {
             let button_value = buttons[i].innerHTML;
             if (numbers(button_value) && verification.isNumberAllowed || operators(button_value) && verification.isOperatorAllowed || symbols(button_value)){
-                if (output.innerHTML.trim() == '0'){
+                if (output.innerHTML.trim() == '0' && !symbols(button_value)){
                     output.innerHTML = buttons[i].innerHTML
                     verification.isOperatorAllowed = true;
                     operation.firstNumber += button_value;
@@ -92,7 +92,7 @@ let getValues = () => {
                     }
                     else if (symbols(button_value)){
                         switch (button_value) {
-                            case '=':
+                            case 'Enter':
                                 if (!verification.stillFirstNumber && verification.isOperatorAllowed){
                                     output.innerHTML = equal();
                                     operation.firstNumber = equal();
@@ -108,21 +108,22 @@ let getValues = () => {
                                 operation.firstNumber = '';
                                 operation.operator = '';
                                 operation.secondNumber = '';
+                                verification.isNumberAllowed = true;
+                                verification.isOperatorAllowed = false;
+                                verification.stillFirstNumber = true;
+                                verification.maxOperatorsReached = false;
                             break;
                         }
                     }
                 }
             }
-            else{
-                console.log(new Error('nope'));
-            }
         })
     }
 }
 // adds key events 
-document.addEventListener('keypress', function(event) {
-    if (numbers(event.key) && verification.isNumberAllowed || operators(event.key) && verification.isOperatorAllowed){
-        if (output.innerHTML.trim() === '0'){
+window.addEventListener('keydown', function(event) {
+    if (numbers(event.key) && verification.isNumberAllowed || operators(event.key) && verification.isOperatorAllowed || symbols(event.key)){
+        if (output.innerHTML.trim() === '0' && !symbols(event.key)){
             output.innerHTML = event.key
             verification.isOperatorAllowed = true;
             operation.firstNumber += event.key;
@@ -145,7 +146,6 @@ document.addEventListener('keypress', function(event) {
                 operation.operator += event.key;
                 verification.isNumberAllowed = true;
                 output.innerHTML += event.key;
-                output.replace('/', '÷');
             }
             else if (operators(event.key) && verification.maxOperatorsReached){
                 output.innerHTML = equal();
@@ -156,10 +156,33 @@ document.addEventListener('keypress', function(event) {
                 verification.isNumberAllowed = false;
                 verification.maxOperatorsReached = false;
             }
+            else if (symbols(event.key)){
+                if (event.key == 'Enter'){
+                    console.log('eweww')
+                    if (!verification.stillFirstNumber && verification.isOperatorAllowed) {
+                        output.innerHTML = equal();
+                        operation.firstNumber = equal();
+                        operation.operator = '';
+                        operation.secondNumber = '';
+                    }
+                }
+                switch (event.key) {
+                    case 'Backspace':
+                        console.log('erase');
+                    break;
+                    case 'C':
+                        output.innerHTML = '0';
+                        operation.firstNumber = '';
+                        operation.operator = '';
+                        operation.secondNumber = '';
+                        verification.isNumberAllowed = true;
+                        verification.isOperatorAllowed = false;
+                        verification.stillFirstNumber = true;
+                        verification.maxOperatorsReached = false;
+                    break;
+                }
+            }
         }
-    }
-    else {
-        console.log(new Error('nope'));
     }
 })
 
