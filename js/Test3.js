@@ -101,7 +101,22 @@ let getValues = () => {
                                 }
                             break;
                             case '←':
-                                console.log('erase');
+                                let str = output.innerHTML.slice(0, -1);
+                                output.innerHTML = str;
+                                if (verification.stillFirstNumber){
+                                    operation.firstNumber = operation.firstNumber.slice(0, -1);
+                                }
+                                else if (!verification.stillFirstNumber){
+                                    if (operation.secondNumber.length >= 1){
+                                        operation.secondNumber = operation.secondNumber.slice(0, -1);
+                                    }
+                                    else if (operation.secondNumber.length == 0){
+                                        operation.operator = '';
+                                        verification.isOperatorAllowed = true;
+                                        verification.maxOperatorsReached = false;
+                                        verification.stillFirstNumber = true;
+                                    }
+                                }
                             break;
                             case 'C':
                                 output.innerHTML = '0';
@@ -121,7 +136,7 @@ let getValues = () => {
     }
 }
 // adds key events 
-window.addEventListener('keydown', event => {
+window.addEventListener('keypress', event => {
     if (numbers(event.key) && verification.isNumberAllowed || operators(event.key) && verification.isOperatorAllowed || symbols(event.key)){
         if (output.innerHTML.trim() === '0' && !symbols(event.key)){
             output.innerHTML = event.key
@@ -157,35 +172,50 @@ window.addEventListener('keydown', event => {
                 verification.isNumberAllowed = false;
                 verification.maxOperatorsReached = false;
             }
-            else if (symbols(event.key)){
-                switch (event.key) {
-                    case 'Enter': 
-                    if (!verification.stillFirstNumber && verification.isOperatorAllowed) {
-                        output.innerHTML = equal();
-                        operation.firstNumber = output.innerHTML;
-                        operation.operator = '';
-                        operation.secondNumber = '';
-                    }
-                    break;
-                    case 'Backspace':
-                        console.log('erase');
-                    break;
-                    case 'Delete':
-                        output.innerHTML = '0';
-                        operation.firstNumber = '';
-                        operation.operator = '';
-                        operation.secondNumber = '';
-                        verification.isNumberAllowed = true;
-                        verification.isOperatorAllowed = false;
-                        verification.stillFirstNumber = true;
-                        verification.maxOperatorsReached = false;
-                    break;
-                }
-            }
         }
     }
 })
-
+// for non-input keys
+window.addEventListener('keydown', event => {
+    switch (event.key) {
+        case 'Enter': 
+        if (!verification.stillFirstNumber && verification.isOperatorAllowed) {
+            output.innerHTML = equal();
+            operation.firstNumber = output.innerHTML;
+            operation.operator = '';
+            operation.secondNumber = '';
+        }
+        break;
+        case 'Backspace':
+            let str = output.innerHTML.slice(0, -1);
+            output.innerHTML = str;
+            if (verification.stillFirstNumber){
+                operation.firstNumber = operation.firstNumber.slice(0, -1);
+            }
+            else if (!verification.stillFirstNumber){
+                if (operation.secondNumber.length >= 1){
+                    operation.secondNumber = operation.secondNumber.slice(0, -1);
+                }
+                else if (operation.secondNumber.length == 0){
+                    operation.operator = '';
+                    verification.isOperatorAllowed = true;
+                    verification.maxOperatorsReached = false;
+                    verification.stillFirstNumber = true;
+                }
+            }
+        break;
+        case 'Escape':
+            output.innerHTML = '0';
+            operation.firstNumber = '';
+            operation.operator = '';
+            operation.secondNumber = '';
+            verification.isNumberAllowed = true;
+            verification.isOperatorAllowed = false;
+            verification.stillFirstNumber = true;
+            verification.maxOperatorsReached = false;
+        break;
+    }
+})
 // equal function
 let equal = () => {
     let firstNumber = parseFloat(operation.firstNumber);
