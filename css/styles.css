@@ -19,8 +19,6 @@ body {
 }
 
 #wrapper{
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
@@ -32,8 +30,6 @@ body {
 }
 
 #output {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     margin: 25px 20px 30px 20px;
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(0, 0, 0, 0.01);
