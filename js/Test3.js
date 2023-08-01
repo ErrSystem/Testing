@@ -40,12 +40,26 @@ let numbers = value => {
         }
     }
 }
+// To verify if its a symbol
+let symbols = value => {
+    let symbolsValues = ['←','C','='];
+    let counter = 0;
+    for (symbol of symbolsValues){
+        counter++;
+        if (symbol == value){
+            return true;
+        }
+        else if (counter == 3 && symbol != value) {
+            return false;
+        }
+    }
+}
 // to add event listeners to buttons and get their values
 let getValues = () => {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click' , function() {
             let button_value = buttons[i].innerHTML;
-            if (numbers(button_value) && verification.isNumberAllowed || operators(button_value) && verification.isOperatorAllowed){
+            if (numbers(button_value) && verification.isNumberAllowed || operators(button_value) && verification.isOperatorAllowed || symbols(button_value)){
                 if (output.innerHTML.trim() == '0'){
                     output.innerHTML = buttons[i].innerHTML
                     verification.isOperatorAllowed = true;
@@ -64,13 +78,38 @@ let getValues = () => {
                     }
                     else if (operators(button_value) && !verification.maxOperatorsReached){
                         verification.isOperatorAllowed = false;
+                        verification.isNumberAllowed = true;
                         verification.maxOperatorsReached = true;
                         verification.stillFirstNumber = false;
                         operation.operator += button_value;
                         output.innerHTML += button_value;
                     }
                     else if (operators(button_value) && verification.maxOperatorsReached){
-                        equal();
+                        output.innerHTML = equal();
+                        operation.firstNumber = equal();
+                        operation.operator = '';
+                        operation.secondNumber = '';
+                    }
+                    else if (symbols(button_value)){
+                        switch (button_value) {
+                            case '=':
+                                if (!verification.stillFirstNumber && verification.isOperatorAllowed){
+                                    output.innerHTML = equal();
+                                    operation.firstNumber = equal();
+                                    operation.operator = '';
+                                    operation.secondNumber = '';
+                                }
+                            break;
+                            case '←':
+                                console.log('erase');
+                            break;
+                            case 'C':
+                                output.innerHTML = '0';
+                                operation.firstNumber = '';
+                                operation.operator = '';
+                                operation.secondNumber = '';
+                            break;
+                        }
                     }
                 }
             }
@@ -104,18 +143,18 @@ document.addEventListener('keypress', function(event) {
                 verification.maxOperatorsReached = true;
                 verification.stillFirstNumber = false;
                 operation.operator += event.key;
-                if (event.key == '/'){
-                    output.innerHTML += '÷';
-                }
-                else {
-                    output.innerHTML += event.key;
-                }
+                verification.isNumberAllowed = true;
+                output.innerHTML += event.key;
+                output.replace('/', '÷');
             }
             else if (operators(event.key) && verification.maxOperatorsReached){
-                equal();
-                verification.isOperatorAllowed = false;
+                output.innerHTML = equal();
+                operation.firstNumber = equal();
+                operation.operator = '';
+                operation.secondNumber = '';
+                verification.isOperatorAllowed = true;
+                verification.isNumberAllowed = false;
                 verification.maxOperatorsReached = false;
-                verification.stillFirstNumber = true;
             }
         }
     }
@@ -126,11 +165,28 @@ document.addEventListener('keypress', function(event) {
 
 // equal function
 let equal = () => {
-    output.innerHTML = '0';
-    console.log(operation);
-    operation.operator = '';
-    operation.firstNumber = '';
-    operation.secondNumber = '';
+    console.log('zezez');
+    let firstNumber = parseFloat(operation.firstNumber);
+    let secondNumber = parseFloat(operation.secondNumber);
+    verification.isOperatorAllowed = true;
+    verification.isNumberAllowed = false;
+    verification.maxOperatorsReached = false;
+    switch (operation.operator){
+        case '+':
+            return (firstNumber + secondNumber).toFixed(2);
+        break;
+        case '-':
+            return (firstNumber - secondNumber).toFixed(2);
+        break;
+        case 'x':
+            return (firstNumber * secondNumber).toFixed(2);
+        case '÷':
+            return (firstNumber / secondNumber).toFixed(2);
+        break;
+        case '/':
+            return (firstNumber / secondNumber).toFixed(2);
+        break;
+    }
 }
 
 // loads function when the page gets loaded
