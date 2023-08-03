@@ -10,7 +10,7 @@ async function FetchData() {
         // key detection
         window.addEventListener('keypress', event => {
             if (event.key === 'Enter'){
-                addToHTML(); // returns to function
+                search(); // returns to function
             }
         })
     }
@@ -18,33 +18,31 @@ async function FetchData() {
         console.error(error);
     }
 }
-
-const addToHTML = () => {
-    const list = document.getElementById('list');
-    const results = search();
-    for (result of results){
-        if (!isEven(i)){
-            list =+ `<li>${result}: ${result}</li> <br><br>`;
-        }
-    }
-}
-
 const search = () => {
-    let input = document.getElementById('input');
+    const input = document.getElementById('input').value;
+    const list = document.getElementById('list');
     let results = [];
-    for (let i=0; i < data.count; i++){
-        const api = data.entries[i];
-        if (input.length <= api.API.length && input == api.API.slice(0, input.length)) {
-            results += api.API + api.Description;
+    let counters = {
+        loop: 0,
+        even: 0,
+        results: 0,
+    };
+    for (entry of data.entries){
+        counters.loop++;
+        if (input.length <= entry.API.length && input.toUpperCase() == entry.API.toUpperCase().slice(0, input.length)) {
+            results[counters.results] = `${entry.API}: ${entry.Description}`;
+            counters.results++
             console.log(results);
         }
-        else if (i == data.count) {
-            console.log(results);
-            return results;
+        else if (counters.loop <= data.count) {
+            for (result of results){
+                if (!isEven(counters.even)){
+                    list =+ `<li>${result}</li> <br><br>`;
+                }
+            }
         }
     }
 }
-
 const isEven = number => {
     if (number % 2 == 0) {
         return true;
