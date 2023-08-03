@@ -38,4 +38,4 @@ const search = () => {
         }
     }
 }
-FetchData();
+window.onload = FetchData;

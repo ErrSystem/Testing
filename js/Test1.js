@@ -1,26 +1,18 @@
-let data;
-async function FetchData() {
-    const APIurl = 'https://api.publicapis.org/entries';
-    const options = {
-    method: 'GET',
-}
-    try {
-        const response = await fetch(APIurl, options)
-        data = await response.json()
-        // key detection
-        window.addEventListener('keypress', event => {
-            if (event.key === 'Enter'){
-                addToHTML(); // returns to function
-            }
-        })
-    }
-    catch (error){
-        console.error(error);
+let addZero = numbers => {
+    for (let i = 0; numbers.length >= i; i++){
+        if(numbers[i] < 10 && i <= 3){
+            numbers[i] = '0'+numbers[i];
+        }
+        else if(i == numbers.length){
+            return numbers;
+        }
     }
 }
-
-function addToHTML() {
-  console.log(data)
+const Getdate = () => {
+    let date = new Date();
+    let day = addZero([date.getFullYear(), date.getMonth()+1, date.getDate()]);
+    let time = addZero([date.getHours(), date.getMinutes(), date.getSeconds()]);
+    document.getElementById('p').innerHTML = `Current Date: ${day.join('/')} ${time.join(':')}`;
 }
-
-FetchData()
+document.getElementById('p').innerHTML =  'Loading...';
+setInterval(Getdate, 1000);
