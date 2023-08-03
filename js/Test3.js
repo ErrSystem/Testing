@@ -19,35 +19,23 @@ async function FetchData() {
     }
 }
 const search = () => {
-    const input = document.getElementById('input').value;
+    const input = document.getElementById('input');
     const list = document.getElementById('list');
+    const inputValue = input.value;
+    list.innerHTML = '';
+    input.value = ''; 
     let results = [];
-    let counters = {
-        loop: 0,
-        even: 0,
-        results: 0,
-    };
+    let counters = {loop: 0, addToHTML: 0, results: 0};
     for (entry of data.entries){
         counters.loop++;
-        if (input.length <= entry.API.length && input.toUpperCase() == entry.API.toUpperCase().slice(0, input.length)) {
+        if (inputValue.length <= entry.API.length && inputValue.toLowerCase() == entry.API.toLowerCase().slice(0, inputValue.length)) {
             results[counters.results] = `${entry.API}: ${entry.Description}`;
             counters.results++
-            console.log(results);
         }
-        else if (counters.loop <= data.count) {
-            for (result of results){
-                if (!isEven(counters.even)){
-                    list =+ `<li>${result}</li> <br><br>`;
-                }
-            }
+        else if (counters.loop <= data.count && counters.addToHTML < results.length) {
+            list.innerHTML += `<li>${results[counters.addToHTML]}</li><br><br>`;
+            counters.addToHTML++;
         }
     }
 }
-const isEven = number => {
-    if (number % 2 == 0) {
-        return true;
-    }
-    return false;
-}
-
 FetchData();
