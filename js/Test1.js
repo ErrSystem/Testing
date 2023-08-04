@@ -16,4 +16,4 @@ const Getdate = () => {
     document.getElementById('p').innerHTML = `Current Date: ${addZero(...day)} ${addZero(...time)}`;
 }
 document.getElementById('p').innerHTML =  'Loading...';
-setInterval(Getdate, 1000);
+setInterval(Getdate, 500);
