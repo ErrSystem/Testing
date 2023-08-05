@@ -1,15 +1,10 @@
-let addZero = num => {
-    if(num < 10){
-       num = '0'+num;
-    }
-    return num;
+const addZero = num => num <= 9 ? '0'+num : num.toString();
+const changeHtml = () => {
+    const date = new Date();
+    let fullTime = [date.getDate(), date.getMonth()+1, date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
+    const modifiedDate = fullTime.slice(0, 3).map(num => addZero(num)).join('/');
+    const modifiedTime = fullTime.slice(3).map(num => addZero(num)).join(':');
+    document.getElementById('p').innerHTML = `Current Time: ${modifiedDate} ${modifiedTime}`;
 }
-const Getdate = () => {
-    let date = new Date();
-    let day = [date.getDate(), date.getMonth()+1, date.getFullYear()];
-    let time = [date.getHours(), date.getMinutes(), date.getSeconds()];
-    document.getElementById('p').innerHTML = `Current Date: ${day.map(element => addZero(element)).join('/')} ${time.map(element => addZero(element)).join(':')}`;
-}
-
-document.getElementById('p').innerHTML =  'Loading...';
-setInterval(Getdate, 500);
+document.getElementById('p').innerHTML = `Loading...`;
+setInterval(changeHtml, 100);
