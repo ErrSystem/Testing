@@ -1,10 +1,9 @@
-let array = ['fruits:', 'apple', 'banana'];
-let array2 = ['vegetals:', 'potato', 'onion'];
-let finalArray = array.concat('|', array2);
-let verifyString = value => {
-    if (typeof value == 'string'){
-        return 'Wow thats a string!'
-    }
-    return `No bro thats a ${typeof value} not a string`;
-}
-console.log(verifyString(finalArray));
+let originalNumber = prompt('number?');
+let powerPrompt = prompt('power?');
+
+let root = () => Math.sqrt(originalNumber).toFixed(2)
+let power = () => Math.pow(originalNumber, powerPrompt).toFixed(2)
+let random = () => (Math.random() * 1000).toFixed(2);
+
+document.querySelector('p').innerHTML += `The square root of this number (${originalNumber}) is ${root()} and its power by ${powerPrompt} is ${power()}`;
+document.querySelector('p').innerHTML += `<br> Here is a random number: ${random()}`;
