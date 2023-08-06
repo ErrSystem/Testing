@@ -43,8 +43,19 @@ button:hover {
 
 /* Group Customization */
 
-#addCustomization_toDo {
+#customizationOverlay_toDo {
     display: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#addCustomization_toDo {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background-color: rgba(183, 185, 187, 0.747);
@@ -54,10 +65,11 @@ button:hover {
     padding: 50px;
     width: 300px;
     height: 120px;
-    position: fixed;
+    position: absolute;
     transform: translate(-50%, -50%);
     box-shadow: 1px 1px 50px;
     left: 50%;
+    top: 50%;
     border: solid 1px;
 }
 
@@ -76,7 +88,6 @@ button:hover {
     left: 3%;
     width: 25px;
     height: 25px;
-    padding-left: 7px;
     background-color: rgba(255, 0, 0, 0.592);
     border: 1px solid;
     border-radius: 4px;
@@ -122,18 +133,11 @@ button:hover {
     margin-top: 35px;
     width: 80%;
     background: rgba(255, 255, 255, .5);
-}
-
-#task_contener_list {
-    list-style: none;
-    padding: 0;
     display: flex;
+    padding: 30px 0 30px 0;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 50px;
-}
-
-#task_contener_list:first-child {
-    margin-left: 20px;
+    row-gap: 3rem;
 }
 
 .Tasks_contener {
@@ -141,7 +145,6 @@ button:hover {
     border-radius: 4px;
     background-color: rgba(255, 0, 0, 0.695);
     padding-bottom: 40px;
-    width: 300px;
 }
 
 .task {
@@ -164,13 +167,13 @@ button:hover {
 
 #addButton_toDo {
     height: 50px;
-    width: 50px;
-    transition: all ease 0.95s;
-    font-weight: 600;
-    border: 1px solid;
-    border-radius: 5px;
-    font-size: 25px;
-    margin-top: 150%;
+width: 50px;
+transition: all ease 0.95s;
+font-weight: 600;
+border: 1px solid;
+border-radius: 5px;
+font-size: 25px;
+margin-top: 10%;
 }
 
 #addButton_toDo:active {

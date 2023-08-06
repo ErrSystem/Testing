@@ -8,43 +8,33 @@
 </head>
 <body>
     <h1>To Do list</h1>
-    </section>
-    <section id="tasks_toDo">
-        <p id="tasksCounter_toDo">Remaining Tasks: 0</p>
-        <p id="completedTasks_toDo">Completed Tasks: 0</p>
-        <center>
-            <div id="mainTask_contener">
-                <ul id="task_contener_list">
+    <p id="tasksCounter_toDo">Remaining Tasks: 0</p>
+    <p id="completedTasks_toDo">Completed Tasks: 0</p>
+    <center>
+        <div id="mainTask_contener">
+            <div class="Tasks_contener">
+                <h1 id="title_contener_number">Title</h1>
+                <ul class="Tasks_list">
                     <li>
-                        <div class="Tasks_contener">
-                            <h1 id="title_contener_number">Title</h1>
-                            <ul>
-                                <li>
-                                    <p class="task">Task</p>
-                                </li>
-                            </ul>
-                            <button class="addTaskButton">+</button>
-                        </div>
+                        <p class="task">Task</p>
                     </li>
-                    <li>
-                        <button id="addButton_toDo">+</button>
-                    </li>
-                    <li>
-                        <div>
-                            <!-- Customization for group tasks -->
-                            <div id="addCustomization_toDo">
-                                <p id="titleCustomization_toDo">Create new group</p>
-                                <button id="closeCustomization_toDo">X</button>
-                                <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
-                                <p id="newContenerColorText_toDo">Choose color : </p>
-                                <input type="color" id="changeColor_toDo">
-                            </div>
-                        </div>
-                    </li>
+                    </ul>
+                    <button class="addTaskButton">+</button>
+                </div>
+                <button id="addButton_toDo">+</button>
                 </ul>
             </div>
+            <div id="customizationOverlay_toDo">
+                <!-- Customization for group tasks -->
+                <div id="addCustomization_toDo">
+                    <p id="titleCustomization_toDo">Create new group</p>
+                    <button id="closeCustomization_toDo">X</button>
+                    <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
+                    <p id="newContenerColorText_toDo">Choose color : </p>
+                    <input type="color" id="changeColor_toDo">
+                </div>
+            </div>
         </center>        
-    </section>
 </body>
 <script src="js/ToDo.js"></script>
 </html>
