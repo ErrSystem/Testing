@@ -1,69 +1,168 @@
-html{
-    box-sizing: border-box;
+@font-face {
+    font-family: Ubuntu_Light;
+    src: url(fonts/Ubuntu-Light.ttf);
+}
+@font-face {
+    font-family: Ubuntu_Bold;
+    src: url(fonts/Ubuntu-Bold.ttf);
 }
 
-body {
-    background: linear-gradient(320deg, rgb(48, 184, 48), rgb(47, 47, 145));
-    font-family: 'Dosis', sans-serif;
+body{
+    text-align: center;
+    font-family: Ubuntu_Light;
 }
 
-#wrapper{
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid black;
-    border-radius: 16px;
-    height: 450px;
-    width: 300px;
-    flex-basis: 290px;
-    padding: 10px 15px;
+h1 {
+    margin-top: 35px;
+    font-family: Ubuntu_Bold;
 }
 
-#output {
-    margin: 25px 20px 30px 20px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0, 0, 0, 0.01);
+button:hover {
+    box-shadow: 1px 1px 20px black;
+    transition: all ease 0.95s;
+}
+
+/* Tasks counters */
+
+#tasksCounter_toDo {
+    margin-top: 50px;
+    font-weight: 700;
+}
+
+#completedTasks_toDo {
+    color: green;
+    font-weight: 700;
+}
+
+/* Add section */
+
+#addButton_toDo {
+    height: 210px;
+    width: 200px;
+    transition: all ease 0.95s;
+    font-weight: 600;
+    border: 1px solid;
     border-radius: 5px;
-    text-align: right;
-    padding: 10px 10px;
-    font-size: 18px;
 }
 
-.calc-buttons-row {
+#addButton_toDo:active {
+    background-color: yellow;
+}
+
+/* Group Customization */
+
+#addCustomization_toDo {
+    display: none;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(183, 185, 187, 0.747);
+    background: blur(4px);
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 50px;
+    width: 300px;
+    height: 120px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 1px 50px;
+    left: 50%;
+    border: solid 1px;
+}
+
+#titleCustomization_toDo {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    font-weight: 600;
+    font-family: Ubuntu_Bold;
+    transform: translate(-50% , -50%);
+}
+
+#closeCustomization_toDo {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    width: 25px;
+    height: 25px;
+    padding-left: 7px;
+    background-color: rgba(255, 0, 0, 0.592);
+    border: 1px solid;
+    border-radius: 4px;
+    transition: all ease 0.95s;
+}
+
+#newContenerTitle_toDo {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    transition: all ease 0.95s;
+}
+
+#newContenerTitle_toDo:hover {
+    box-shadow: 1px 1px 20px;
+    transition: all ease 0.95s;
+}
+
+#newContenerColorText_toDo {
+    margin-top: 30px;
+}
+
+#changeColor_toDo{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    transition: all ease 0.95s;
+}
+
+#changeColor_toDo:hover {
+    box-shadow: 1px 1px 20px;
+    transition: all ease 0.95s;
+}
+
+/* tasks contener */
+
+#mainTask_contener {
+    border: solid 1px;
+    border-radius: 5px;
+    margin-top: 35px;
+    width: 80%;
+}
+
+#task_contener_list {
+    list-style: none;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    margin: 5% 0;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
-.calc-button {
-    background-color: rgba(255, 255, 255, 0.75);
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.01);
-    font-size: 18px;
-    border-radius: 3px;
-    flex-basis: 20%;
-    height: 50px;
-    width: 50px;
+#task_contener_list:first-child {
+    margin-left: 20px;
+}
+
+.Tasks_contener {
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: rgba(255, 0, 0, 0.695);
+    padding-bottom: 40px;
+    width: 300px;
+}
+
+.task {
+    overflow-wrap: break-word;
+    width: 235px;
+    text-align: left;
+}
+
+.addTaskButton {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    margin-top: 10px;
+    padding: 10px 0 28px 0;
+    border-radius: 4px;
     transition: all ease 0.95s;
-}
-
-.calc-button:last-child {
-    background-color: brown;
-    color: white;
-}
-
-.calc-button:hover {
-    background-color: inherit;
-    transition: all ease 0.95s;
-}
-
-.calc-button:active {
-    background-color: rgb(255, 255, 0)
-}
-
-.double {
-    flex-basis: 47%;
-}
-
-.triple {
-    flex-basis: 74%;
 }

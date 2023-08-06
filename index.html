@@ -7,7 +7,40 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <p id="p"></p>
-    <script src="js/Test1.js"></script>
+    <h1>To Do list</h1>
+    </section>
+    <section id="tasks_toDo">
+        <p id="tasksCounter_toDo">Remaining Tasks: 0</p>
+        <p id="completedTasks_toDo">Completed Tasks: 0</p>
+        <center>
+            <div id="mainTask_contener">
+                <ul id="task_contener_list">
+                    <li>
+                        <div class="Tasks_contener">
+                            <h1 id="title_contener_number">Title</h1>
+                            <ul>
+                                <li>
+                                    <p class="task">Task</p>
+                                </li>
+                            </ul>
+                            <button class="addTaskButton">+</button>
+                        </div>
+                    </li>
+                    <li>
+                        <button id="addButton_toDo">+</button>
+                    </li>
+                </ul>
+                <!-- Customization for group tasks -->
+                <div id="addCustomization_toDo">
+                    <p id="titleCustomization_toDo">Create new group</p>
+                    <button id="closeCustomization_toDo">X</button>
+                    <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
+                    <p id="newContenerColorText_toDo">Choose color : </p>
+                    <input type="color" id="changeColor_toDo">
+                </div>
+            </div>
+        </center>        
+    </section>
+    <script src="js/ToDo.js"></script>
 </body>
 </html>
