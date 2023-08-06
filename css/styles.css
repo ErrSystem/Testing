@@ -7,9 +7,16 @@
     src: url(fonts/Ubuntu-Bold.ttf);
 }
 
+html{
+    height: 100%;
+}
+
+
 body{
     text-align: center;
     font-family: Ubuntu_Light;
+    background: linear-gradient(320rad, aqua, blueviolet);
+    background-attachment: fixed;
 }
 
 h1 {
@@ -32,21 +39,6 @@ button:hover {
 #completedTasks_toDo {
     color: green;
     font-weight: 700;
-}
-
-/* Add section */
-
-#addButton_toDo {
-    height: 210px;
-    width: 200px;
-    transition: all ease 0.95s;
-    font-weight: 600;
-    border: 1px solid;
-    border-radius: 5px;
-}
-
-#addButton_toDo:active {
-    background-color: yellow;
 }
 
 /* Group Customization */
@@ -129,6 +121,7 @@ button:hover {
     border-radius: 5px;
     margin-top: 35px;
     width: 80%;
+    background: rgba(255, 255, 255, .5);
 }
 
 #task_contener_list {
@@ -165,4 +158,21 @@ button:hover {
     padding: 10px 0 28px 0;
     border-radius: 4px;
     transition: all ease 0.95s;
+}
+
+/* Add section */
+
+#addButton_toDo {
+    height: 50px;
+    width: 50px;
+    transition: all ease 0.95s;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-top: 150%;
+}
+
+#addButton_toDo:active {
+    background-color: yellow;
 }
