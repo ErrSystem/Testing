@@ -12,29 +12,22 @@
     <p id="completedTasks_toDo">Completed Tasks: 0</p>
     <center>
         <div id="mainTask_contener">
-            <div class="Tasks_contener">
-                <h1 id="title_contener_number">Title</h1>
-                <ul class="Tasks_list">
-                    <li>
-                        <p class="task">Task</p>
-                    </li>
-                    </ul>
-                    <button class="addTaskButton">+</button>
-                </div>
-                <button id="addButton_toDo">+</button>
-                </ul>
+            <button id="addButton_toDo" onclick="addGroupClick()">+</button>
+        </div>
+        <div id="customizationOverlay_toDo">
+            <!-- Customization for group tasks -->
+            <div id="addCustomization_toDo">
+                <p id="titleCustomization_toDo">Create new group</p>
+                <button id="closeCustomization_toDo" onclick="closeCustomization()">X</button>
+                <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
+                <p id="alertTitleContener_Todo"></p>
+                <p id="newContenerColorText_toDo">Choose color :</p>
+                <input type="color" id="changeColor_toDo">
+                <br>
+                <button id="submitButton_toDo" onclick="addGroup()">Submit!</button>
             </div>
-            <div id="customizationOverlay_toDo">
-                <!-- Customization for group tasks -->
-                <div id="addCustomization_toDo">
-                    <p id="titleCustomization_toDo">Create new group</p>
-                    <button id="closeCustomization_toDo">X</button>
-                    <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
-                    <p id="newContenerColorText_toDo">Choose color : </p>
-                    <input type="color" id="changeColor_toDo">
-                </div>
-            </div>
-        </center>        
+        </div>
+    </center>        
 </body>
 <script src="jquery.js"></script>
 <script src="js/Test4.js"></script>
