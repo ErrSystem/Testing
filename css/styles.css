@@ -160,6 +160,7 @@ button:hover {
     border-radius: 4px;
     padding-bottom: 40px;
     width: 330px;
+    margin: 5px;
 }
 
 .task {
