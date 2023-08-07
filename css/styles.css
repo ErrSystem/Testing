@@ -167,13 +167,13 @@ button:hover {
 
 #addButton_toDo {
     height: 50px;
-width: 50px;
-transition: all ease 0.95s;
-font-weight: 600;
-border: 1px solid;
-border-radius: 5px;
-font-size: 25px;
-margin-top: 10%;
+    width: 50px;
+    transition: all ease 0.95s;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-top: 75px;
 }
 
 #addButton_toDo:active {

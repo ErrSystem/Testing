@@ -1,7 +1,9 @@
-let email = 'errsys@gmail.com';
-let array = Array.from(email);
-console.log(array.some(value => value == '@') && array.some(value => value == '.'));
-/* Or we can use:
-    let email = 'errsys@gmail.com';
-    console.log(email.includes('@') && email.includes('.')); 
-thats more simple but wanted to test .some() */
+let storage = {
+    currentTasks : [],
+    currentGroups: [],
+    doneTasks: 0,
+}
+// add group button
+document.getElementById('addButton_toDo').addEventListener('click', () => $(document.getElementById('customizationOverlay_toDo')).fadeIn('slow'));
+// close group custom button
+document.getElementById('closeCustomization_toDo').addEventListener('click', () => $(document.getElementById('customizationOverlay_toDo')).fadeOut('slow'));
