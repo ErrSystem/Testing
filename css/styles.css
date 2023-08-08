@@ -163,10 +163,15 @@ button:hover {
     margin: 5px;
 }
 
+.Tasks_list{
+    padding: 0;
+}
+
 .task {
     overflow-wrap: break-word;
-    width: 235px;
+    width: 225px;
     text-align: left;
+    margin: 15px 0px;
 }
 
 .addTaskButton {
@@ -177,6 +182,10 @@ button:hover {
     padding: 10px 0 28px 0;
     border-radius: 4px;
     transition: all ease 0.95s;
+}
+
+.addTaskButton:hover {
+    box-shadow: 1px 1px 20px white;
 }
 
 /* Add section */
