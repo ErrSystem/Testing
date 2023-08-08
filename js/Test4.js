@@ -89,7 +89,7 @@ const add_input = contener => {
 // Add task function
 const addTask = contener => {
     if (verifyCharacters(`input_${contener}`) && verifyOld(`input_${contener}`)) {
-        window.removeEventListener('keypress', enterKeyOverlay)
+        window.removeEventListener('keypress', enterKeyOverlay);
         const task = `<li class="task">${document.getElementById(`input_${contener}`).value}</li>`;
         storage.currentTasks[storage.currentTasks.length] = document.getElementById(`input_${contener}`).value;
         document.getElementById(`Task_list_${contener}`).innerHTML += task;
@@ -133,3 +133,12 @@ const alert_system = type => {
         $(alert).fadeOut('fast');
     }, 3000);
 }
+/// remaining tasks counter
+setInterval(() => {
+    document.getElementById('tasksCounter_toDo').innerHTML = `Remaining Tasks: ${storage.currentTasks.length}`;
+}, 50);
+// add hover function
+document.getElementsByClassName('task').addEventListener('mouseover', () => {
+    const img = document.createElement('img'); img.setAttribute('src', 'css/img/check_icon.png');
+
+})
