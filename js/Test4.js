@@ -19,16 +19,32 @@ const enterKeyOverlay = event => {
     }
 }
 // Verify if the user typed +3 characters or not
-const verify = inputID => {
-    const input = document.getElementById(inputID).value;
+const verifyCharacters = inputID => {
+    const input = document.getElementById(inputID).value.trim();
     if (input.length <= 3){
         return false;
     }
     return true;
 }
+// Verify if the user typed the same task or not
+const verifyOld = inputID => {
+    const input = document.getElementById(inputID).value.trim();
+    if (inputID == 'newContenerTitle_toDo') {
+        if (storage.currentGroups.some(group => group == input.toLowerCase())){
+            return false;
+        }
+        return true;
+    }
+    else {
+        if (storage.currentTasks.some(task => task == input.toLowerCase())){
+            return false;
+        }
+        return true;
+    }
+}
 // Add group function 
 const addGroup = () => {
-    if (verify('newContenerTitle_toDo')) {
+    if (verifyCharacters('newContenerTitle_toDo') && verifyOld(`newContenerTitle_toDo`)) {
         document.getElementById('customizationOverlay_toDo').removeEventListener('keypress', enterKeyOverlay);
         $(document.getElementById('customizationOverlay_toDo')).fadeOut('slow');
         const task_contener = document.getElementById('mainTask_contener');
@@ -45,15 +61,14 @@ const addGroup = () => {
             document.getElementById(`Tasks_contener_${storage.currentGroups.length}`).style.color = 'white';
         }
         $(document.getElementById(`Tasks_contener_${storage.currentGroups.length}`)).fadeIn('slow');
+        storage.currentGroups[storage.currentGroups.length] = Title.value;
         Title.value = ''; color.value = '#FFFFFF';
-        storage.currentGroups[storage.currentGroups.length] += Title.value;
+    }
+    else if (!verifyOld(`newContenerTitle_toDo`)) {
+        alert_system('oldGroup');
     }
     else {
-        document.getElementById('alertTitleContener_Todo').innerHTML = 'You have to write atleast 4characters!';
-        $(document.getElementById('alertTitleContener_Todo')).fadeIn('fast');
-        setTimeout(() => {
-            $(document.getElementById('alertTitleContener_Todo')).fadeOut('fast');
-        }, 3000);
+        alert_system('minCharactersOverlay');
     }
 }
 // Add input function
@@ -64,15 +79,16 @@ const add_input = contener => {
     document.getElementById(`addTaskButton_${contener}`).textContent = 'Done?';
     document.getElementById(`addTaskButton_${contener}`).setAttribute('onclick', `addTask(${contener})`);
     // add key event
-    window.addEventListener('keypress', function enterKeyOverlay(event) {
+    const enterKeyOverlay = event => {
         if (event.key === 'Enter'){
             addTask(contener);
         }
-    });
+    }
+    document.getElementById(`input_${contener}`).addEventListener('keypress', enterKeyOverlay);
 }
 // Add task function
 const addTask = contener => {
-    if (verify(`input_${contener}`)) {
+    if (verifyCharacters(`input_${contener}`) && verifyOld(`input_${contener}`)) {
         window.removeEventListener('keypress', enterKeyOverlay)
         const task = `<li class="task">${document.getElementById(`input_${contener}`).value}</li>`;
         storage.currentTasks[storage.currentTasks.length] = document.getElementById(`input_${contener}`).value;
@@ -81,13 +97,39 @@ const addTask = contener => {
         document.getElementById(`addTaskButton_${contener}`).textContent = 'Add new task';
         document.getElementById(`input_${contener}`).remove();
     }
-    else {
-        const alert = document.getElementById('alertTask_toDo');
-        alert.innerHTML = 'You have to write atleast 4characters!';
-        alert.style.color = 'red';
-        $(alert).fadeIn('fast');
-        setTimeout(() => {
-            $(alert).fadeOut('fast');
-        }, 3000);
+    else if (!verifyOld(`input_${contener}`)) {
+        alert_system('oldTask')
     }
+    else {
+        alert_system('minCharactersTask')
+    }
+}
+// Alert system
+const alert_system = type => {
+    let alert;
+    switch (type) {
+        case 'minCharactersTask':
+            alert = document.getElementById('alertTask_toDo');
+            alert.innerHTML = 'You have to write atleast 4characters!';
+            alert.style.color = 'red';
+        break;
+        case 'minCharactersOverlay':
+            alert = document.getElementById('alertTitleContener_Todo');
+            alert.innerHTML = 'You have to write atleast 4characters!';
+        break;
+        case 'oldTask':
+            alert = document.getElementById('alertTask_toDo');
+            alert.innerHTML = 'You already added this task!';
+            alert.style.color = 'red';
+        break;
+        case 'oldGroup':
+            alert = document.getElementById('alertTitleContener_Todo');
+            alert.innerHTML = 'You already added this group!';
+            alert.style.color = 'red';
+        break;
+    } 
+    $(alert).fadeIn('fast');
+    setTimeout(() => {
+        $(alert).fadeOut('fast');
+    }, 3000);
 }
