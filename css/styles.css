@@ -142,7 +142,7 @@ button:hover {
 
 /* tasks contener */
 
-#mainTask_contener {
+#mainGroup_contener {
     border: solid 1px;
     border-radius: 5px;
     margin-top: 35px;
@@ -156,7 +156,7 @@ button:hover {
     transition: all ease 0.95s;
 }
 
-.Tasks_contener {
+.Group {
     border: 1px solid;
     border-radius: 4px;
     padding-bottom: 40px;
@@ -164,15 +164,20 @@ button:hover {
     margin: 5px;
 }
 
-.Tasks_list{
+.Tasks_contener{
     padding: 0;
 }
 
+.tasks_list {
+    width: 275px;
+    padding: 10px;
+    padding-top: 0;
+    display: flex;
+    gap: 10px;
+}
+
 .task {
-    overflow-wrap: break-word;
-    width: 225px;
-    text-align: left;
-    margin: 15px 0px;
+    width: 235px;
 }
 
 .addTaskButton {
@@ -187,6 +192,13 @@ button:hover {
 
 .addTaskButton:hover {
     box-shadow: 1px 1px 20px white;
+}
+
+.doneButton_toDo {
+    display: none;
+    width: 30px;
+    height: 50px;
+    filter: invert(1);
 }
 
 /* Add section */
