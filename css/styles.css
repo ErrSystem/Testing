@@ -37,6 +37,7 @@ button:hover {
 }
 
 #completedTasks_toDo {
+    display: none;
     color: green;
     font-weight: 700;
 }
@@ -198,7 +199,19 @@ button:hover {
     display: none;
     width: 30px;
     height: 50px;
-    filter: invert(1);
+}
+
+.closeButtonGroup_toDo {
+    float: left;
+    background-color: transparent;
+    border: 0;
+    border-radius: 5px;
+    margin: 5px;
+    display: none;
+}
+
+.closeButtonGroup_toDo:hover {
+    box-shadow: none;
 }
 
 /* Add section */
