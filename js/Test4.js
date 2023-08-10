@@ -47,6 +47,7 @@ const verifyOld = inputID => {
 // Add group function 
 const addGroup = () => {
     if (verifyCharacters('newContenerTitle_toDo') && verifyOld(`newContenerTitle_toDo`)) {
+        const order = storage.currentGroups.length;
         document.getElementById('customizationOverlay_toDo').removeEventListener('keypress', enterKeyOverlay);
         $(document.getElementById('customizationOverlay_toDo')).fadeOut('slow');
         const task_contener = document.getElementById('mainGroup_contener');
@@ -55,23 +56,26 @@ const addGroup = () => {
         const contener = document.createElement('div');
         document.getElementById('addButton_toDo').style.marginTop = '75px';
         document.getElementById('mainGroup_contener').style.width = '80%';
-        contener.setAttribute('id', `Group_${storage.currentGroups.length}`); contener.setAttribute('class', 'Group');
+        contener.setAttribute('id', `Group_${order}`); contener.setAttribute('class', 'Group');
         contener.style.display = 'none'; contener.style.backgroundColor = color.value;
-        contener.innerHTML = `<button class="closeButtonGroup_toDo" id="closeButtonGroup_${storage.currentGroups.length}" onclick='closeGroup(${storage.currentGroups.length})'>X</button><h1 style="overflow-wrap: break-word;" id="title_contener_${storage.currentGroups.length}">${Title.value}</h1><ul class="Tasks_contener" id='Tasks_contener_${storage.currentGroups.length}'></ul><button class="addTaskButton" id="addTaskButton_${storage.currentGroups.length}" onclick="add_input(${storage.currentGroups.length})">Add task</button><p id="alertTask_toDo_${storage.currentGroups.length}"></p>`
+        contener.innerHTML = `<button class="closeButtonGroup_toDo" id="closeButtonGroup_${order}" onclick='closeGroup(${order})'>X</button><h1 style="overflow-wrap: break-word;" id="title_contener_${order}">${Title.value}</h1><ul class="Tasks_contener" id='Tasks_contener_${order}'></ul><button class="addTaskButton" id="addTaskButton_${order}" onclick="add_input(${order})">Add task</button><p id="alertTask_toDo_${order}"></p>`
         task_contener.insertAdjacentElement('afterbegin', contener);
-        document.getElementById(`Group_${storage.currentGroups.length}`).addEventListener('mouseover', () => {
-            document.getElementById(`closeButtonGroup_${storage.currentGroups.length}`).style.display = 'block';
-        });
-        document.getElementById(`Group_${storage.currentGroups.length}`).addEventListener('mouseout', () => {
-            $(document.getElementById(`closeButtonGroup_${storage.currentGroups.length}`)).fadeOut('fast');
-        });
+        // if color is black
         if (color.value === '#000000'){ 
-            document.getElementById(`Group_${storage.currentGroups.length}`).style.color = 'white';
-            document.getElementById(`closeButtonGroup_${storage.currentGroups.length}`).style.color = 'white';
+            document.getElementById(`Group_${order}`).style.color = 'white'; // text color is white
+            document.getElementById(`closeButtonGroup_${order}`).style.color = 'white'; // close button color is white
         }
-        $(document.getElementById(`Group_${storage.currentGroups.length}`)).fadeIn('slow');
-        storage.currentGroups[storage.currentGroups.length] = Title.value.trim().toLowerCase();
-        Title.value = ''; color.value = '#FFFFFF';
+        $(document.getElementById(`Group_${order}`)).fadeIn('slow'); // animate group display
+        storage.currentGroups[order] = Title.value.trim().toLowerCase(); // adding title value to the counter
+        Title.value = ''; color.value = '#FFFFFF'; // editing values
+        // hover close group functions
+        document.getElementById(`Group_${order}`).addEventListener('mouseover', () => closeAnim(order, 'block'));
+        document.getElementById(`Group_${order}`).addEventListener('mouseout', () => closeAnim(order, 'none'));
+        console.log(document.getElementById(`Group_${order}`).children)
+        for (element of document.getElementById(`Group_${order}`).children) {
+            element.addEventListener('mouseover', () => closeAnim(order, 'block'));
+            element.addEventListener('mouseout', () => closeAnim(order, 'none'));
+        }
     }
     else if (!verifyOld(`newContenerTitle_toDo`)) {
         alert_system('oldGroup', undefined);
@@ -152,6 +156,9 @@ const closeGroup = id => {
         document.getElementById(`Group_${id}`).remove();
     }, 200);
 }
+// Close animation
+const closeAnim = (id, type) => type == 'block' ? $(document.getElementById(`closeButtonGroup_${id}`)).fadeIn('fast') : setTimeout(() => {$(document.getElementById(`closeButtonGroup_${id}`)).fadeOut('fast')}, 500);
+
 // Alert system
 const alert_system = (type, number) => {
     let alert;
