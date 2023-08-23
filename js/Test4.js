@@ -1,45 +1,62 @@
-const responsiveHistory = isOpened => {
-    const button = document.getElementById('calc-HistoryButton');
-    const responsiveAnimationOpen = () => {
-        let numberRightPosition = 100;
-        let numberLeftPosition = -4;
-        const animationLoop = setInterval(() => {
-            if (numberLeftPosition < 0){
-                numberLeftPosition = numberLeftPosition + 2;
-                button.style.left = numberLeftPosition+ 'px';
-            }
-            else if(numberLeftPosition >= 0 && numberRightPosition != 0){
-                console.log(numberRightPosition)
-                numberRightPosition = numberRightPosition - 2;
-                button.style.left = 'unset';
-                button.style.right = numberRightPosition + '%';
-            }
-            else if (numberRightPosition == 0) {
-                clearInterval(animationLoop);
-            }
-        }, 5);
-    }
-    const responsiveAnimationClose = () => {
-        let numberRightPosition = 0;
-        const animationLoop = setInterval(() => {
-            if (numberRightPosition <= 94){
-                console.log(numberRightPosition)
-                numberRightPosition = numberRightPosition + 1;
-                button.style.right = numberRightPosition + '%';
-            }
-            else if(numberRightPosition == 96){
-                button.style.left = '-4px';
-                button.style.right = 'unset';
-                clearInterval(animationLoop);
-            }
-        }, 5);
-    }
-    if (!isOpened){
-        responsiveAnimationOpen();
-        button.setAttribute('onclick', 'responsiveHistory(true)');
-    }
-    else if (isOpened){
-        responsiveAnimationClose();
-        button.setAttribute('onclick', 'responsiveHistory(false)');
+const timeHTML = document.getElementById('Time');
+const dateHTML = document.getElementById('Date');
+const changeTime = (currentDate) => {
+    timeHTML.innerText = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+}
+const changeDate = (currentDate) => {
+    dateHTML.innerHTML = `${getDayName(currentDate.getDay())} ${currentDate.getDate()} ${getMonthName(currentDate.getMonth() + 1)}`;
+}
+const addZero = () => {
+
+}
+const getDayName = day => {
+    switch (day) {
+        case 1:
+            return 'Monday';
+        case 2:
+            return 'Tuesday';
+        case 3:
+            return 'Wednesday';
+        case 4:
+            return 'Thursday';
+        case 5:
+            return 'Friday';
+        case 6:
+            return 'Saturday';
+        case 7: 
+            return 'Sunday';
     }
 }
+const getMonthName = month => {
+    switch (month) {
+        case 1:
+            return 'January';
+        case 2:
+            return 'February';
+        case 3:
+            return 'March';
+        case 4:
+            return 'April';
+        case 5:
+            return 'May';
+        case 6:
+            return 'June';
+        case 7:
+            return 'July';
+        case 8:
+            return 'August';
+        case 9:
+            return 'September';
+        case 10:
+            return 'October';
+        case 11:
+            return 'November';
+        case 12:
+            return 'December';
+    }
+}
+setInterval(() => {
+    const date = new Date();
+    changeTime(date);
+    changeDate(date);
+}, 50);
