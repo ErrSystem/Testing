@@ -15,217 +15,48 @@ html{
 body{
     text-align: center;
     font-family: Ubuntu_Light;
-    background: linear-gradient(320rad, aqua, blueviolet);
+    background: linear-gradient(320rad, blue, orange);
     background-attachment: fixed;
 }
 
 h1 {
-    margin-top: 35px;
     font-family: Ubuntu_Bold;
 }
 
-button:hover {
-    box-shadow: 1px 1px 20px black;
-    transition: all ease 0.95s;
-}
-
-/* Tasks counters */
-
-#tasksCounter_toDo {
-    margin-top: 50px;
-    font-weight: 700;
-}
-
-#completedTasks_toDo {
-    display: none;
-    color: green;
-    font-weight: 700;
-}
-
-/* Group Customization */
-
-#customizationOverlay_toDo {
-    display: none;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-#addCustomization_toDo {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    background-color: rgba(183, 185, 187, 0.747);
-    background: blur(4px);
-    margin-top: 10px;
-    border-radius: 5px;
-    padding: 55px 50px 105px 50px;
-    width: 300px;
-    height: 120px;
+#DateTime {
+    -webkit-text-stroke-color: black;
+    line-height: 25px;
     position: absolute;
     transform: translate(-50%, -50%);
-    box-shadow: 1px 1px 50px;
+    left: 50%;
+    top: 25%;
+}
+
+#Time {
+    color: white;
+    -webkit-text-stroke-width: 2.5px;
+    font-size: 70px;
+    margin: 0;
+}
+
+#Date {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#welcomeMessage {
+    font-size: 30px;
+    font-weight: 800;
+    position: absolute;
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    border: solid 1px;
 }
 
-#titleCustomization_toDo {
+#appLaunchInstruction {
+    font-weight: 600;
     position: absolute;
-    top: 3%;
+    transform: translate(-50%, -50%);
     left: 50%;
-    font-weight: 600;
-    font-family: Ubuntu_Bold;
-    transform: translate(-50% , -50%);
-}
-
-#alertTitleContener_Todo {
-    display: none;
-    color: red;
-    margin: 5px 0 0 0;
-}
-
-#closeCustomization_toDo {
-    position: absolute;
-    top: 5%;
-    left: 3%;
-    width: 25px;
-    height: 25px;
-    background-color: rgba(255, 0, 0, 0.592);
-    border: 1px solid;
-    border-radius: 4px;
-    transition: all ease 0.95s;
-}
-
-#newContenerTitle_toDo {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid;
-    transition: all ease 0.95s;
-}
-
-#newContenerTitle_toDo:hover {
-    box-shadow: 1px 1px 20px;
-    transition: all ease 0.95s;
-}
-
-#newContenerColorText_toDo {
-    margin-top: 30px;
-}
-
-#changeColor_toDo{
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    width: 35px;
-    height: 35px;
-    background-color: white;
-    transition: all ease 0.95s;
-}
-
-#changeColor_toDo:hover {
-    box-shadow: 1px 1px 20px;
-    transition: all ease 0.95s;
-}
-
-#submitButton_toDo {
-    border-radius: 0.3rem;
-    border: 1px solid;
-    padding: 5px;
-    transition: all ease 0.95s;
-}
-
-
-/* tasks contener */
-
-#mainGroup_contener {
-    border: solid 1px;
-    border-radius: 5px;
-    margin-top: 35px;
-    width: 20%;
-    background: rgba(255, 255, 255, .5);
-    display: flex;
-    padding: 30px 0 30px 0;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    row-gap: 3rem;
-    transition: all ease 0.95s;
-}
-
-.Group {
-    border: 1px solid;
-    border-radius: 4px;
-    padding-bottom: 40px;
-    width: 330px;
-    margin: 5px;
-}
-
-.Tasks_contener{
-    padding: 0;
-}
-
-.tasks_list {
-    width: 275px;
-    padding: 10px;
-    padding-top: 0;
-    display: flex;
-    gap: 10px;
-}
-
-.task {
-    width: 235px;
-}
-
-.addTaskButton {
-    width: 200px;
-    height: 30px;
-    border: 1px solid;
-    margin-top: 10px;
-    padding: 10px 0 28px 0;
-    border-radius: 4px;
-    transition: all ease 0.95s;
-}
-
-.addTaskButton:hover {
-    box-shadow: 1px 1px 20px white;
-}
-
-.doneButton_toDo {
-    display: none;
-    width: 30px;
-    height: 50px;
-}
-
-.closeButtonGroup_toDo {
-    float: left;
-    background-color: transparent;
-    border: 0;
-    border-radius: 5px;
-    margin: 5px;
-    display: none;
-}
-
-.closeButtonGroup_toDo:hover {
-    box-shadow: none;
-}
-
-/* Add section */
-
-#addButton_toDo {
-    height: 50px;
-    width: 50px;
-    transition: all ease 0.95s;
-    font-weight: 600;
-    border: 1px solid;
-    border-radius: 5px;
-    font-size: 25px;
-}
-
-#addButton_toDo:active {
-    background-color: yellow;
+    top: 55%;
 }

@@ -7,27 +7,14 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>To Do list</h1>
-    <p id="tasksCounter_toDo">Remaining Tasks: 0</p>
-    <p id="completedTasks_toDo">Completed Tasks: 0</p>
-    <center>
-        <div id="mainGroup_contener">
-            <button id="addButton_toDo" onclick="addGroupClick()">+</button>
+    <section id="welcomeSection">
+        <div id="DateTime">
+            <h1 id="Time">00:00</h1>
+            <h3 id="Date">Monday 01 august</h3>
         </div>
-        <div id="customizationOverlay_toDo">
-            <!-- Customization for group tasks -->
-            <div id="addCustomization_toDo">
-                <p id="titleCustomization_toDo">Create new group</p>
-                <button id="closeCustomization_toDo" onclick="closeCustomization()">X</button>
-                <input type="text" placeholder="Write it's title" id="newContenerTitle_toDo">
-                <p id="alertTitleContener_Todo"></p>
-                <p id="newContenerColorText_toDo">Choose background color :</p>
-                <input type="color" id="changeColor_toDo">
-                <br>
-                <button id="submitButton_toDo" onclick="addGroup()">Submit!</button>
-            </div>
-        </div>
-    </center>        
+        <h2 id="welcomeMessage">Welcome!</h2>
+        <p id="appLaunchInstruction">Load an application above to continue!</p>
+    </section>
 </body>
 <script src="jquery.js"></script>
 <script src="js/Test4.js"></script>
