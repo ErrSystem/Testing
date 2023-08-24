@@ -2,20 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Infinite Apps</title>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link type="text/css" rel="stylesheet" href="">
+    <link rel="icon" href="css/img/infiniteAppsFav.png">
 </head>
 <body>
-    <section id="welcomeSection">
-        <div id="DateTime">
-            <h1 id="Time">00:00</h1>
-            <h3 id="Date">Monday 01 January</h3>
+    <section id="Weather">
+        <div id="weatherSearchBar">
+            <i class="fas fa-location-dot"></i>
+            <input type="text" placeholder="Enter your location">
+            <button class="fa-solid fa-magnifying-glass"></button>
         </div>
-        <h2 id="welcomeMessage">Welcome!</h2>
-        <p id="appLaunchInstruction">Load an application above to continue!</p>
+        <div id="weatherInformations">
+            <h1>France</h1>
+            <img src="">
+            <h2>40˚</h2>
+        </div>
     </section>
 </body>
-<script src="jquery.js"></script>
-<script src="js/Test4.js"></script>
+<script src="https://kit.fontawesome.com/35b391aeca.js" crossorigin="anonymous"></script>
+<script src="js/mainFunctions/JQuery.js"></script>
+<script src="js/mainFunctions/NavMenu.js"></script>
+<script src="js/WelcomePage.js"></script>
+<script src="js/mainFunctions/AppLoading.js"></script>
+<script src="js/Apps/ToDo.js"></script>
+<script src="js/Apps/Calculator.js"></script>
+<script src="js/mainFunctions/Refresh.js"></script>
 </html>

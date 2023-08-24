@@ -1,62 +1,83 @@
+/* General */
 @font-face {
     font-family: Ubuntu_Light;
     src: url(fonts/Ubuntu-Light.ttf);
 }
+
 @font-face {
     font-family: Ubuntu_Bold;
     src: url(fonts/Ubuntu-Bold.ttf);
 }
 
 html{
-    height: 100%;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
 }
-
 
 body{
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    background: #04263d;
     font-family: Ubuntu_Light;
-    background: linear-gradient(320rad, blue, orange);
-    background-attachment: fixed;
 }
 
-h1 {
-    font-family: Ubuntu_Bold;
+#Weather {
+    height: 645px;
+    width: 400px;
+    padding: 10px 15px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 1px 1px 25px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.95s ease;
 }
 
-#DateTime {
-    -webkit-text-stroke-color: black;
-    line-height: 25px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 25%;
+#weatherSearchBar {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#Time {
-    color: white;
-    -webkit-text-stroke-width: 2.5px;
-    font-size: 70px;
-    margin: 0;
+#weatherSearchBar i {
+    font-size: 25px;
 }
 
-#Date {
-    font-size: 20px;
-    font-weight: 900;
+#weatherSearchBar input{
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0;
+    border: none;
 }
 
-#welcomeMessage {
-    font-size: 30px;
-    font-weight: 800;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
+#weatherSearchBar input::placeholder {
+    color: black;
+    font-weight: 300;
+    font-size: 18px;
+    text-transform: capitalize;
 }
 
-#appLaunchInstruction {
-    font-weight: 600;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 55%;
+#weatherSearchBar button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: black;
+    border: none;
+    background-color: #dff6ff;
+    font-size: 22px;
+    border-radius: 50%;
+    transition: all ease 0.5s;
 }
+
+#weatherSearchBar button:hover {
+    transition: all ease 0.5s;
+    background-color: #04263d;
+    color: #fff;
+}
+#weatherInformations {}
