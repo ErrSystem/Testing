@@ -1,10 +1,22 @@
-const addZero = num => num <= 9 ? '0'+num : num.toString();
-const changeHtml = () => {
-    const date = new Date();
-    const full = [date.getDate(), date.getMonth()+1, date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
-    const newDay = full.slice(0,3).map(num => addZero(num)).join('/');
-    const newTime = full.slice(3).map(num => addZero(num)).join(':');
-    document.getElementById('p').innerHTML = `Current Date and Time: ${newDay.concat(' ', newTime)}`;
+const button = document.getElementsByClassName('fa-magnifying-glass')[0];
+button.addEventListener('click', () => APIConvertCity());
+async function APIConvertCity() {
+    const city = document.getElementById('weatherInput').value.toLowerCase();
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=63e1acaec8dd2692bb774f9c1a33ae59`)
+    .then(response => response.json())
+    .then(json => {
+        // if(json[0].lat !== undefined){
+            console.log(json)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${json[0].lat}&lon=${json[0].lon}&appid=63e1acaec8dd2692bb774f9c1a33ae59`)
+            .then(response => response.json())
+            .then(Data => console.log(Data))
+        // }
+        // else {
+            // console.log('invalid city')
+        // }
+    })
+    .catch(() => console.log('Invalid city name'));
 }
-document.getElementById('p').innerHTML = 'Loading...';
-setInterval(changeHtml, 100);
+async function APISearchWeather(lat, lon) {
+
+}

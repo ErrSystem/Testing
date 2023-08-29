@@ -13,22 +13,23 @@
     <section id="Weather">
         <div id="weatherSearchBar">
             <i class="fas fa-location-dot"></i>
-            <input type="text" placeholder="Enter your location">
+            <input type="text" placeholder="Enter your location" id="weatherInput">
             <button class="fa-solid fa-magnifying-glass"></button>
         </div>
         <div id="weatherInformations">
-            <h1>France</h1>
-            <img src="">
-            <h2>40˚</h2>
+            <h1 id="regionWeather">France</h1>
+            <img id="weatherImg" src="css/img/Rain.png">
+            <p id="weatherStatus">Raining</p>
+            <h2 id="weatherTemp"><i class="fa-solid fa-temperature-half" style="padding-right: 10px; color: red;"></i>40˚C</h2>
+            <h2 id="weatherWindSpeed"><i class="fa-solid fa-wind" style="padding-right: 10px;"></i>1km/h</h2>
+            <div id="weatherRainIndicator"><img src="css/img/rainPercent.png">70%</div>
+        </div>
+        <div id="weather404">
+            <img src="css/img/404.png">
+            <p>City Not Found!</p>
         </div>
     </section>
 </body>
 <script src="https://kit.fontawesome.com/35b391aeca.js" crossorigin="anonymous"></script>
-<script src="js/mainFunctions/JQuery.js"></script>
-<script src="js/mainFunctions/NavMenu.js"></script>
-<script src="js/WelcomePage.js"></script>
-<script src="js/mainFunctions/AppLoading.js"></script>
-<script src="js/Apps/ToDo.js"></script>
-<script src="js/Apps/Calculator.js"></script>
-<script src="js/mainFunctions/Refresh.js"></script>
+<script src="js/Test1.js"></script>
 </html>
