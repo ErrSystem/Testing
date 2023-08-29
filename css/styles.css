@@ -26,7 +26,6 @@ body{
 }
 
 #Weather {
-    transition: all 1s ease-out;
     width: 400px;
     padding: 10px 15px;
     text-align: center;
@@ -34,6 +33,16 @@ body{
     box-shadow: 1px 1px 25px;
     overflow: hidden;
     border-radius: 10px;
+}
+
+.openWeather {
+    animation: openWeather 1s;
+    height: 570px;
+}
+
+.closeWeather {
+    animation: closeWeather 1s;
+    height: 50px;
 }
 
 #weatherSearchBar {
@@ -81,9 +90,6 @@ body{
 }
 #weatherInformations {
     display: none;
-    color: #fff;
-    background-color: #04263d;
-    box-shadow: 1px 1px 20px black;
     height: 85%;
     width: 100%;
     border-radius: 5px;
@@ -91,39 +97,37 @@ body{
     padding-top: 10px;
 }
 
+#weatherMaxTemp {
+    font-family: Ubuntu_Bold;
+    margin: 0;
+}
+
 #weatherImg{
-    margin-top: 10px;
-    width: 200px;
-    background-color: #04263d;
-    border-radius: 5px;
-    filter: blur(2px);
+    margin-top: 5px;
+    width: 250px;
+    /* filter: blur(2px); */
 }
 
 #weatherStatus{
     margin: 0 0 0 0;
-    color: aqua;
-    text-shadow: 1px 1px 30px aqua;
+    text-shadow: 1px 1px 30px;
+    font-size: 20px;
+    font-family: Ubuntu_Bold;
+    margin-bottom: 55px;
 }
 
 #weatherTemp {
-    padding-top: 20px;
+    margin-top: -10px;
+    font-size: 25px;
+    font-family: Ubuntu_Bold;
 }
 
 #weatherWindSpeed {
     font-size: 18px;
 }
 
-#weatherRainIndicator{
-    font-size: 17px;
-}
-
-#weatherRainIndicator img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: -5px;
-    margin-right: 5px;
-    background-color: transparent;
-    filter: invert(1);
+#weatherHumidity {
+    font-size: 18px;
 }
 
 #weather404 {
@@ -134,4 +138,23 @@ body{
 #weather404 p {
     font-family: Ubuntu_Bold;
     font-size: 20px;
+}
+
+@keyframes openWeather {
+    0%{
+        height: 50px;
+    }
+    100% {
+        height: 570px;
+    }
+
+}
+
+@keyframes closeWeather {
+    0% {
+        height: 570px;
+    }
+    100% {
+        height: 50px;
+    }
 }
