@@ -1,0 +1,24 @@
+@font-face {
+    font-family: Light;
+    src: url(/css/fonts/Ubuntu-Light.ttf);
+}
+
+@font-face {
+    font-family: Bold;
+    src: url(/css/fonts/Ubuntu-Bold.ttf);
+}
+
+h1 {
+    font-family: Bold;
+}
+
+p, a {
+    font-family: Light;
+}
+
+*{
+    transition: all ease 0.9s;
+    &:hover {
+        transition: all ease 0.9s;
+    }
+}

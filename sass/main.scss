@@ -1,21 +1,20 @@
 @import "./variables";
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@import "./elementsGeneral";
 
 body {
     background-color: $generalBackground;
 }
 
-.main {
+#welcome {
     width: 80%;
     margin: 20px auto;
-    p {
-        color: $generalTextColor;
-        font-size: $generalFontSize;
-        font-weight: map-get($fontWeights, bold);
+    background-color: #fff;
+    padding: 10px;
+    @include threeDElement(1px);
+    &_msg {
+        @include textStyles($generalTextColor, $generalFontSize, weight(bold));
+        &::before {
+            content: "- ";
+        }
     }
 }
