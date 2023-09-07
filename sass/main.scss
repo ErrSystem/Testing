@@ -1,20 +1,27 @@
 @import "./variables";
 @import "./elementsGeneral";
+@import "./resizeElements";
 
 body {
     background-color: $generalBackground;
 }
 
-#welcome {
+#welcome { // le div qui contient un titre et un paragraph
     width: 80%;
     margin: 20px auto;
     background-color: #fff;
-    padding: 10px;
-    @include threeDElement(1px);
+    padding: 5px 20px;
+    @include contenerStyles(1px);
+    &:hover {
+        @include contenerStyles(1px, $boxShadow: true)
+    }
     &_msg {
         @include textStyles($generalTextColor, $generalFontSize, weight(bold));
         &::before {
             content: "- ";
         }
+    }
+    @include mobile {
+        background-color: red;
     }
 }

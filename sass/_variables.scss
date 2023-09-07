@@ -6,6 +6,7 @@ $fontWeights: (
     "medium": 600,
     "bold": 900
 );
+$mobileSize: 850px;
 
 @mixin textStyles($color, $fontSize, $fontWeight) {
     color: $color;
@@ -13,11 +14,19 @@ $fontWeights: (
     font-weight: $fontWeight;
 }
 
-@mixin threeDElement($borderSize) {
+@mixin contenerStyles($borderSize, $boxShadow: false) {
     backdrop-filter: blur(5px);
-    box-shadow: 1px 1px 50px;
     border: solid black $borderSize;
     border-radius: 5px;
+    @if $boxShadow {
+        box-shadow: 1px 1px 20px;
+    }
+}
+
+@mixin mobile() {
+    @media (max-width: $mobileSize) {
+        @content;
+    }
 }
 
 @function weight ($weightName){
