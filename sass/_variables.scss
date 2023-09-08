@@ -6,9 +6,9 @@ $fontWeights: (
     "medium": 600,
     "bold": 900
 );
-$mobileSize: 850px;
+$mobileSize: 950px;
 
-@mixin textStyles($color, $fontSize, $fontWeight) {
+@mixin textStyles($fontWeight, $color: $generalTextColor, $fontSize: $generalFontSize) {
     color: $color;
     font-size: $fontSize;
     font-weight: $fontWeight;

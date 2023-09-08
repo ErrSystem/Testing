@@ -18,6 +18,7 @@ p, a {
 
 *{
     transition: all ease 0.9s;
+    box-sizing: border-box;
     &:hover {
         transition: all ease 0.9s;
     }

@@ -1,27 +1,60 @@
 @import "./variables";
 @import "./elementsGeneral";
-@import "./resizeElements";
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: $generalBackground;
 }
 
-#welcome { // le div qui contient un titre et un paragraph
-    width: 80%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 5px 20px;
-    @include contenerStyles(1px);
-    &:hover {
-        @include contenerStyles(1px, $boxShadow: true)
-    }
-    &_msg {
-        @include textStyles($generalTextColor, $generalFontSize, weight(bold));
-        &::before {
-            content: "- ";
+#welcomeContener {
+    display: flex;
+    row-gap: 5px;
+    justify-content: space-between;
+    margin: 20px;
+
+    .welcome {
+        width: 45%;
+        background-color: #fff;
+        padding: 5px 20px;
+        @include contenerStyles(1px);
+    
+        &:hover {
+            @include contenerStyles(1px, $boxShadow: true)
+        }
+    
+        &_msg {
+            @include textStyles(weight(bold));
+            &::before {
+                content: "- ";
+            }
+        }
+    
+        @include mobile {
+            background-color: red;
         }
     }
+}
+
+#byeSection {
+    @include contenerStyles(1px);
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    .bye {
+        @include textStyles(weight(regular));
+        width: 45%;
+        margin: 20px;
+    }
     @include mobile {
-        background-color: red;
+        background-color: #fff;
+        flex-direction: column;
+        h1::before {
+            content: "+ ";
+            font-family: Bold;
+        }
+        .bye {
+            width: fit-content;
+        }
     }
 }
