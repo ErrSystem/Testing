@@ -1,0 +1,23 @@
+@font-face {
+    font-family: ubuntuLight;
+    src: url(../css/fonts/Ubuntu/Ubuntu-Light.ttf);
+}
+@font-face {
+    font-family: ubuntuBold;
+    src: url(../css/fonts/Ubuntu/Ubuntu-Bold.ttf);
+}
+
+*{
+    transition: all ease .5s;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    &:hover {
+        transition: all ease .5s;
+    }
+}
+
+body {
+    overflow: hidden;
+    text-align: center;
+}

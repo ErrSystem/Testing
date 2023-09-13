@@ -6,29 +6,3 @@ $fontWeights: (
     "medium": 600,
     "bold": 900
 );
-$mobileSize: 950px;
-
-@mixin textStyles($fontWeight, $color: $generalTextColor, $fontSize: $generalFontSize) {
-    color: $color;
-    font-size: $fontSize;
-    font-weight: $fontWeight;
-}
-
-@mixin contenerStyles($borderSize, $boxShadow: false) {
-    backdrop-filter: blur(5px);
-    border: solid black $borderSize;
-    border-radius: 5px;
-    @if $boxShadow {
-        box-shadow: 1px 1px 20px;
-    }
-}
-
-@mixin mobile() {
-    @media (max-width: $mobileSize) {
-        @content;
-    }
-}
-
-@function weight ($weightName){
-    @return map-get($fontWeights, $weightName);
-}
