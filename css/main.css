@@ -21,6 +21,18 @@ body {
   text-align: center;
 }
 
+.logo {
+  position: fixed;
+  top: -1px;
+  left: 0;
+  z-index: 2;
+  background: white;
+  border-bottom-right-radius: 5px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  width: 100px;
+}
+
 .welcomeSlide {
   height: 100vh;
 }
@@ -32,6 +44,7 @@ body {
   position: fixed;
   right: 0;
   filter: brightness(0.5);
+  transition: all ease 0.5;
 }
 
 .descSlide {
@@ -55,6 +68,22 @@ body {
   height: 100%;
   width: 100%;
   filter: blur(5px) brightness(0.5);
+}
+
+.reservation img {
+  width: 100vw;
+  height: 100vh;
+  filter: blur(3px) brightness(0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.reservation a {
+  color: red;
+  font-family: "ubuntuBold";
+  font-size: 20px;
+  text-decoration: none;
+  padding-top: 40px;
 }
 
 .content {
@@ -85,7 +114,7 @@ body {
 
 .mouseDown {
   position: absolute;
-  bottom: 5vh;
+  bottom: 0;
   right: 50%;
   transform: translate(-50%, -50%);
 }
@@ -93,8 +122,9 @@ body {
   cursor: pointer;
 }
 .mouseDown img {
-  width: 50px;
-  height: 50px;
+  width: 85px;
+  height: 85px;
+  padding: 20px;
   position: absolute;
   bottom: 25px;
   transform: translate(-50%, -50%);
@@ -102,9 +132,19 @@ body {
 .mouseDown i {
   position: absolute;
   bottom: 10px;
+  padding: 20px;
   transform: translate(-50%, -50%);
   font-size: 20px;
   animation: mouseDown 3s infinite;
+}
+@media (max-width: 770px) {
+  .mouseDown img {
+    display: none;
+  }
+  .mouseDown i {
+    font-size: 30px;
+    -webkit-text-stroke: 1px white;
+  }
 }
 
 @keyframes mouseDown {

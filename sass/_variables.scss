@@ -6,3 +6,9 @@ $fontWeights: (
     "medium": 600,
     "bold": 900
 );
+
+@mixin mobile() {
+    @media (max-width: 770px) {
+        @content;
+    }
+}

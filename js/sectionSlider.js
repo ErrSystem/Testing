@@ -4,25 +4,24 @@ let cooldown = true;
 let touchStart;
 const sliderContener = document.querySelector('.slider');
 
+
 // detectors
 const wheelDetector = event => {
-    let direction = event.deltaY;
-    if (cooldown) {
-        cooldown = false;
-        if (direction == 100 && scrollIndex != 6) {
-            scrollDown();
-        } else if(direction == -100 && scrollIndex != 0){
-            scrollUp();
-        }
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-        });
+    cooldown = false;
+    let direction = Math.sign(event.deltaY);
+    if (direction == 1 && scrollIndex != 6) {
+        scrollDown();
+    } else if(direction == -1 && scrollIndex != 0){
+        scrollUp();
     }
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
     setTimeout(() => {
         cooldown = true;
-    }, 1000);
+    }, 1500);
 }
 
 const touchDetector = event => {
@@ -30,7 +29,7 @@ const touchDetector = event => {
     let target = event.target;
     console.log(target)
     if (cooldown){
-        if (touchEnd < touchStart && scrollIndex != 3 && target.className != "downloadImgs" && target.className != 'fa-download') {
+        if (touchEnd < touchStart && scrollIndex != sliderContener.children.length - 2 && target.className != "resize" && target.nodeType != 'a') {
             scrollDown();
         } else if (touchEnd > touchStart && scrollIndex != 0 && target.className != "downloadImgs" && target.className != 'fa-download'){
             scrollUp();
@@ -44,6 +43,10 @@ const touchDetector = event => {
     setTimeout(() => {
         cooldown = true;
     }, 500);
+}
+
+const trackpadDetector = event => {
+    console.log(event)
 }
 
 // functions
@@ -84,11 +87,9 @@ const scrollDown = () => {
             }, 500);
         }, 250);
         scrollIndex++;
-        // if (scrollIndex == 3){
-        //     document.querySelector('footer').style.display = 'block';
-        //     document.querySelector('body').style.overflow = 'scroll';
-        //     document.querySelector('.scrollDown').style.opacity = '0';
-        // }
+        if (scrollIndex == sliderContener.children.length - 2){
+            document.querySelector('.mouseDown').style.opacity = '0';
+        }
     }
 }
 
@@ -115,7 +116,12 @@ const elementsFadeOut = section => {
     })
 }
 // event listeners
-window.addEventListener('wheel', wheelDetector);
+window.addEventListener('wheel', event => {
+    if (cooldown) {
+        wheelDetector(event);
+        cooldown = false;
+    }
+});
 window.addEventListener('touchstart', e => {
     touchStart = e.touches[0].clientY;
 });

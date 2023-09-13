@@ -14,8 +14,8 @@ setInterval(() => {
         currentVideo++;
     }
     video.style.opacity = 0;
-    video.src = videoList[currentVideo];
     setTimeout(() => {
+        video.src = videoList[currentVideo];
         video.style.opacity = 1;
-    }, 250);
+    }, 500);
 }, 6000);
