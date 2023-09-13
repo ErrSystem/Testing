@@ -21,17 +21,100 @@ body {
   text-align: center;
 }
 
-.firstSlide {
+.welcomeSlide {
   height: 100vh;
 }
-.firstSlide h1 {
-  padding-top: 10vh;
-  font-size: 4rem;
-  font-family: ubuntuBold;
-}
-.firstSlide video {
+.welcomeSlide video {
   width: 100vw;
   height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
+  position: fixed;
+  right: 0;
+  filter: brightness(0.5);
+}
+
+.descSlide {
+  height: 100vh;
+}
+.descSlide h2 {
+  font-size: 45px;
+  font-family: UbuntuBold;
+  margin-bottom: 60px;
+}
+.descSlide p {
+  margin: 20px;
+  font-size: 18px;
+  font-family: UbuntuLight;
+}
+.descSlide img {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  filter: blur(5px) brightness(0.5);
+}
+
+.content {
+  opacity: 0;
+  padding-top: 10vh;
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 20px black;
+}
+.content h1 {
+  padding-top: 10vh;
+  font-size: 4rem;
+  font-family: ubuntuBold;
+}
+.content p {
+  margin: 0 40px;
+  font-family: UbuntuLight;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.mouseDown {
+  position: absolute;
+  bottom: 5vh;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+.mouseDown:hover {
+  cursor: pointer;
+}
+.mouseDown img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 25px;
+  transform: translate(-50%, -50%);
+}
+.mouseDown i {
+  position: absolute;
+  bottom: 10px;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  animation: mouseDown 3s infinite;
+}
+
+@keyframes mouseDown {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: -5px;
+  }
+  100% {
+    bottom: 10px;
+  }
 }/*# sourceMappingURL=main.css.map */
