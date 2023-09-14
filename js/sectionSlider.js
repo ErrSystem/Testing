@@ -9,9 +9,9 @@ const sliderContener = document.querySelector('.slider');
 const wheelDetector = event => {
     cooldown = false;
     let direction = Math.sign(event.deltaY);
-    if (direction == 1 && scrollIndex != 6) {
+    if (direction == 1 && scrollIndex != 6 && !galeryActive) {
         scrollDown();
-    } else if(direction == -1 && scrollIndex != 0){
+    } else if(direction == -1 && scrollIndex != 0 && !galeryActive){
         scrollUp();
     }
     window.scrollTo({
@@ -25,14 +25,16 @@ const wheelDetector = event => {
 }
 
 const touchDetector = event => {
-    let touchEnd = event.changedTouches[0].clientY;
-    let target = event.target;
-    console.log(target)
-    if (cooldown){
-        if (touchEnd < touchStart && scrollIndex != sliderContener.children.length - 2 && target.className != "resize" && target.nodeType != 'a') {
+    if (cooldown) {
+        let CurrentY = event.changedTouches[0].clientY;
+        let direction = CurrentY > touchStart ? "up" : "down";
+        let target = event.target;
+        if (direction == 'down' && scrollIndex != sliderContener.children.length - 3 && !galeryActive && target.nodeType != 'a' && target.className != 'fa-images') {
             scrollDown();
-        } else if (touchEnd > touchStart && scrollIndex != 0 && target.className != "downloadImgs" && target.className != 'fa-download'){
+            cooldown = false;
+        } else if (direction == 'up' && scrollIndex != 0 && !galeryActive  && target.className != 'fa-images' && target.nodeType != 'a'){
             scrollUp();
+            cooldown = false;
         }
         window.scrollTo({
             top: 0,
@@ -40,13 +42,6 @@ const touchDetector = event => {
             behavior: "smooth",
         });
     }
-    setTimeout(() => {
-        cooldown = true;
-    }, 500);
-}
-
-const trackpadDetector = event => {
-    console.log(event)
 }
 
 // functions
@@ -87,7 +82,7 @@ const scrollDown = () => {
             }, 500);
         }, 250);
         scrollIndex++;
-        if (scrollIndex == sliderContener.children.length - 2){
+        if (scrollIndex == sliderContener.children.length - 3){
             document.querySelector('.mouseDown').style.opacity = '0';
         }
     }
@@ -123,9 +118,16 @@ window.addEventListener('wheel', event => {
     }
 });
 window.addEventListener('touchstart', e => {
-    touchStart = e.touches[0].clientY;
+    if (cooldown) {
+        touchStart = e.touches[0].clientY
+    }
 });
-window.addEventListener('touchend', touchDetector);
+window.addEventListener('touchmove', touchDetector);
+window.addEventListener('touchend', () => {
+    setTimeout(() => {
+        cooldown = true;
+    }, 500);
+});
 document.querySelector('.mouseDown').addEventListener('click', scrollDown);
 
 // animation when website is loaded
