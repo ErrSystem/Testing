@@ -4,8 +4,19 @@ let galeryActive = false;
 button.addEventListener('click', () => {
     if (!galeryActive){
         document.querySelector('.galeryContener').style.background = 'white';
-        document.querySelector('.galeryContener').style.width = '93%';
-        document.querySelector('.galeryContener').style.height = '86%';
+        if (window.screen.width > 1024){
+            document.querySelector('.galeryContener').style.width = '93%';
+            document.querySelector('.galeryContener').style.height = '86%';
+        } else if (window.screen.width <= 1024 && window.screen.width > 770) {
+            document.querySelector('.galeryContener').style.width = '89%';
+            document.querySelector('.galeryContener').style.height = '80%';
+        } else if (window.screen.width <= 770 && window.screen.width > 600) {
+            document.querySelector('.galeryContener').style.width = '97%';
+            document.querySelector('.galeryContener').style.height = '80%';
+        } else if (window.screen.width <= 600) {
+            document.querySelector('.galeryContener').style.width = '97%';
+            document.querySelector('.galeryContener').style.height = '89%';
+        }
         sliderContener.children[scrollIndex].style.filter = 'blur(5px)';
         document.querySelector('.mouseDown').style.filter = 'blur(5px)';
         button.style.color = 'black';

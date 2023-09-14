@@ -192,33 +192,100 @@
             }
         }
 
-        @media (max-height: 903px) {
-            ul {
-                bottom: 5%;
-            }  
-        }
-
-        @media (max-height: 820px) {
+        @media (max-width: 1024px) {
             h1 {
-                padding-top: 35px;
-            }
-            ul {
-                bottom: 0;
-            }         
-        }
-
-        @media (max-height: 720px) {
-            h1 {
-                padding-top: 15px;
+                padding-top: 80px;
             }
             .main {
-                width: 895px;
-                height: 470px;
+                width: 800px;
             }
             ul {
-                bottom: -1%;
+                bottom: 17%;
             }
         }
+
+        @media (max-width: 920px) {
+            .main {
+                width: 755px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            ul {
+                bottom: 13%;
+            }
+            .main {
+                width: 630px;
+            }
+        }
+
+        @media (max-width: 780px) {
+            h1 {
+                padding-top: 50px;
+                padding-left: 45px;
+            }
+            .main {
+                width: 600px;
+            }
+            ul {
+                bottom: 8%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                padding-top: 18px;
+            }
+            .main {
+                width: 445px;
+                height: 512px;
+            }
+            ul {
+                bottom: -2%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .main {
+                width: 354px;
+                height: 555px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .main {
+                width: 310px;
+                height: 458px;
+            }
+        }
+
+        // @media (max-height: 950px) {
+        //     ul {
+        //         bottom: 5%;
+        //     }  
+        // }
+
+        // @media (max-height: 820px) {
+        //     h1 {
+        //         padding-top: 35px;
+        //     }
+        //     ul {
+        //         bottom: 0;
+        //     }         
+        // }
+
+        // @media (max-height: 720px) {
+        //     h1 {
+        //         padding-top: 15px;
+        //     }
+        //     .main {
+        //         width: 895px;
+        //         height: 470px;
+        //     }
+        //     ul {
+        //         bottom: -1%;
+        //     }
+        // }
     }
 }
 
