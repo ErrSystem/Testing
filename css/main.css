@@ -23,6 +23,7 @@
 body {
   overflow: hidden;
   text-align: center;
+  background-color: black;
 }
 
 .logo {
@@ -154,7 +155,7 @@ body {
 .galeryContener {
   position: absolute;
   top: 10vh;
-  right: 5vh;
+  right: 20px;
   background: white;
   border-radius: 5px;
   width: 0;
@@ -170,23 +171,25 @@ body {
   color: white;
   font-size: 30px;
   padding: 20px;
+  padding-top: 30px;
   padding-right: 45px;
   float: right;
+  -webkit-text-stroke: 1px black;
 }
 .galeryContener .fa-images::after {
   content: "Galery";
   font-size: 15px;
   letter-spacing: 2px;
   position: absolute;
-  top: 28px;
+  top: 37px;
   right: 90px;
   opacity: 0;
   text-shadow: 1px 1px 20px black;
   transition: all ease 0.5s;
+  -webkit-text-stroke-width: 0;
 }
 .galeryContener .fa-images:hover {
   cursor: pointer;
-  color: black;
 }
 .galeryContener .fa-images:hover::after {
   transition: all ease 0.5s;
@@ -196,6 +199,7 @@ body {
   color: white;
   font-size: 30px;
   padding: 20px;
+  padding-top: 30px;
   padding-right: 45px;
   float: right;
 }
@@ -204,15 +208,15 @@ body {
   font-size: 15px;
   letter-spacing: 2px;
   position: absolute;
-  top: 28px;
+  top: 37px;
   right: 90px;
   opacity: 0;
   text-shadow: 1px 1px 20px black;
   transition: all ease 0.5s;
+  -webkit-text-stroke-width: 0;
 }
 .galeryContener .fa-xmark:hover {
   cursor: pointer;
-  color: black;
 }
 .galeryContener .fa-xmark:hover::after {
   transition: all ease 0.5s;
@@ -254,7 +258,7 @@ body {
   box-shadow: 1px 1px 20px;
 }
 .galeryContener .galery ul img:hover {
-  width: 80px;
+  width: 70px;
   border-radius: 45px;
   cursor: pointer;
 }
@@ -265,6 +269,24 @@ body {
   width: 65px;
   border-radius: 35px;
 }
+@media (max-width: 1661px) {
+  .galeryContener .galery ul {
+    bottom: 4%;
+  }
+}
+@media (max-width: 1280px) {
+  .galeryContener .galery .main {
+    width: 905px;
+    height: 500px;
+    top: 52%;
+  }
+  .galeryContener .galery h1 {
+    padding-top: 15px;
+  }
+  .galeryContener .galery ul {
+    bottom: -5%;
+  }
+}
 @media (max-width: 1024px) {
   .galeryContener .galery h1 {
     padding-top: 80px;
@@ -273,7 +295,7 @@ body {
     width: 800px;
   }
   .galeryContener .galery ul {
-    bottom: 17%;
+    bottom: 20%;
   }
 }
 @media (max-width: 920px) {
@@ -298,12 +320,12 @@ body {
     width: 600px;
   }
   .galeryContener .galery ul {
-    bottom: 8%;
+    bottom: 10%;
   }
 }
 @media (max-width: 600px) {
   .galeryContener .galery h1 {
-    padding-top: 18px;
+    padding-top: 28px;
   }
   .galeryContener .galery .main {
     width: 445px;
@@ -323,6 +345,42 @@ body {
   .galeryContener .galery .main {
     width: 310px;
     height: 458px;
+  }
+}
+
+.fa-dollar-sign {
+  position: fixed;
+  top: 6vh;
+  right: 20px;
+  padding-right: 52px;
+  color: green;
+  font-size: 30px;
+  -webkit-text-stroke: black 1px;
+}
+.fa-dollar-sign::after {
+  transition: all ease 0.5s;
+  color: white;
+  opacity: 0;
+  content: "Reserve";
+  font-size: 15px;
+  position: absolute;
+  right: 90px;
+  -webkit-text-stroke-width: 0;
+  top: 6px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-shadow: 1px 1px 20px black;
+}
+.fa-dollar-sign:hover {
+  cursor: pointer;
+}
+.fa-dollar-sign:hover::after {
+  transition: all ease 0.5s;
+  opacity: 1;
+}
+@media (max-width: 770px) {
+  .fa-dollar-sign {
+    right: 0;
   }
 }
 

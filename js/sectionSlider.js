@@ -4,7 +4,6 @@ let cooldown = true;
 let touchStart;
 const sliderContener = document.querySelector('.slider');
 
-
 // detectors
 const wheelDetector = event => {
     cooldown = false;
@@ -28,11 +27,10 @@ const touchDetector = event => {
     if (cooldown) {
         let CurrentY = event.changedTouches[0].clientY;
         let direction = CurrentY > touchStart ? "up" : "down";
-        let target = event.target;
-        if (direction == 'down' && scrollIndex != sliderContener.children.length - 3 && !galeryActive && target.nodeType != 'a' && target.className != 'fa-images') {
+        if (direction == 'down' && scrollIndex != sliderContener.children.length - 4 && !galeryActive) {
             scrollDown();
             cooldown = false;
-        } else if (direction == 'up' && scrollIndex != 0 && !galeryActive  && target.className != 'fa-images' && target.nodeType != 'a'){
+        } else if (direction == 'up' && scrollIndex != 0 && !galeryActive){
             scrollUp();
             cooldown = false;
         }
@@ -66,10 +64,17 @@ const scrollUp = () => {
     }
 }
 
-const scrollDown = () => {
-    if (scrollIndex < sliderContener.children.length - 2) {
-        const newSlide = sliderContener.children[scrollIndex+1];
+const scrollDown = (isReserve) => {
+    if (scrollIndex < sliderContener.children.length - 3) {
         const currentSlide = sliderContener.children[scrollIndex];
+        let newSlide;
+        if (isReserve === true) {
+            newSlide = sliderContener.children[6];
+            scrollIndex = 6;
+        } else {
+            newSlide = sliderContener.children[scrollIndex+1];
+            scrollIndex++;
+        }
         sliderContener.style.opacity = '0';
         setTimeout(() => {
             sliderContener.style.opacity = 0; 
@@ -81,13 +86,11 @@ const scrollDown = () => {
                 elementsFadeOut(currentSlide);
             }, 500);
         }, 250);
-        scrollIndex++;
-        if (scrollIndex == sliderContener.children.length - 3){
+        if (scrollIndex == sliderContener.children.length - 4){
             document.querySelector('.mouseDown').style.opacity = '0';
         }
     }
 }
-
 
 // animations
 const elementsFadeIn = section => {
@@ -129,7 +132,9 @@ window.addEventListener('touchend', () => {
     }, 500);
 });
 document.querySelector('.mouseDown').addEventListener('click', scrollDown);
-
+document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
+    scrollDown(true);
+})
 // animation when website is loaded
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {

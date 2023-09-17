@@ -130,7 +130,7 @@
 .galeryContener {
     position: absolute;
     top: 10vh;
-    right: 5vh;
+    right: 20px;
     background: white;
     border-radius: 5px;
     width: 0;
@@ -141,6 +141,7 @@
     }
     .fa-images {
         @include galery("Galery");
+        -webkit-text-stroke: 1px black;
     }
     .fa-xmark {
         @include galery("Close");
@@ -178,7 +179,7 @@
                 border-radius: 35px;
                 box-shadow: 1px 1px 20px;
                 &:hover {
-                    width: 80px;
+                    width: 70px;
                     border-radius: 45px;
                     cursor: pointer;
                 }
@@ -192,6 +193,26 @@
             }
         }
 
+        @media (max-width: 1661px) {
+            ul {
+                bottom: 4%;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            .main {
+                width: 905px;
+                height: 500px;
+                top: 52%;
+            }
+            h1 {
+                padding-top: 15px;
+            }
+            ul {
+                bottom: -5%;
+            }
+        }
+
         @media (max-width: 1024px) {
             h1 {
                 padding-top: 80px;
@@ -200,7 +221,7 @@
                 width: 800px;
             }
             ul {
-                bottom: 17%;
+                bottom: 20%;
             }
         }
 
@@ -228,13 +249,13 @@
                 width: 600px;
             }
             ul {
-                bottom: 8%;
+                bottom: 10%;
             }
         }
 
         @media (max-width: 600px) {
             h1 {
-                padding-top: 18px;
+                padding-top: 28px;
             }
             .main {
                 width: 445px;
@@ -258,34 +279,40 @@
                 height: 458px;
             }
         }
+    }
+}
 
-        // @media (max-height: 950px) {
-        //     ul {
-        //         bottom: 5%;
-        //     }  
-        // }
-
-        // @media (max-height: 820px) {
-        //     h1 {
-        //         padding-top: 35px;
-        //     }
-        //     ul {
-        //         bottom: 0;
-        //     }         
-        // }
-
-        // @media (max-height: 720px) {
-        //     h1 {
-        //         padding-top: 15px;
-        //     }
-        //     .main {
-        //         width: 895px;
-        //         height: 470px;
-        //     }
-        //     ul {
-        //         bottom: -1%;
-        //     }
-        // }
+.fa-dollar-sign {
+    position: fixed;
+    top: 6vh;
+    right: 20px;
+    padding-right: 52px;
+    color: green;
+    font-size: 30px;
+    -webkit-text-stroke: black 1px;
+    &::after {
+        transition: all ease 0.5s;
+        color: white;
+        opacity: 0;
+        content: "Reserve";
+        font-size: 15px;
+        position: absolute;
+        right: 90px;
+        -webkit-text-stroke-width: 0;
+        top: 6px;
+        letter-spacing: 1px;
+        font-weight: 900;
+        text-shadow: 1px 1px 20px black;
+    }
+    &:hover {
+        cursor: pointer;
+        &::after {
+            transition: all ease 0.5s;
+            opacity: 1;
+        }
+    }
+    @include mobile() {
+        right: 0;
     }
 }
 
