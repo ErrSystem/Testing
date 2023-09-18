@@ -146,6 +146,37 @@
     .fa-xmark {
         @include galery("Close");
     }
+    .selectRoom {
+        display: none;
+        opacity: 0;
+        width: fit-content;
+        position: absolute;
+        top: 36%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1{
+            padding-top: 75px;
+            font-family: 'robottoBold';
+            font-size: 26px;
+            margin-bottom: 50px;
+        }
+        ul {
+            list-style: none;
+            font-size: 19px;
+            font-family: 'ubuntuLight';
+            line-height: 5rem;
+            li {
+                width: fit-content;            
+                i {
+                    margin-right: 10px;
+                }         
+                &:hover {
+                    cursor: pointer;
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
     .galery {
         display: none;
         opacity: 0;
@@ -291,24 +322,31 @@
     font-size: 30px;
     -webkit-text-stroke: black 1px;
     &::after {
-        transition: all ease 0.5s;
-        color: white;
-        opacity: 0;
-        content: "Reserve";
-        font-size: 15px;
-        position: absolute;
-        right: 90px;
-        -webkit-text-stroke-width: 0;
-        top: 6px;
-        letter-spacing: 1px;
-        font-weight: 900;
-        text-shadow: 1px 1px 20px black;
+        @media (min-width: 800px) {
+            transition: all ease 0.5s;
+            color: white;
+            opacity: 0;
+            content: "Reserve";
+            font-size: 15px;
+            position: absolute;
+            right: 90px;
+            -webkit-text-stroke-width: 0;
+            top: 6px;
+            letter-spacing: 1px;
+            font-weight: 900;
+            text-shadow: 1px 1px 20px black;   
+        }
     }
     &:hover {
         cursor: pointer;
         &::after {
             transition: all ease 0.5s;
             opacity: 1;
+        }
+    }
+    &:active {
+        &::after {
+            opacity: 0;
         }
     }
     @include mobile() {

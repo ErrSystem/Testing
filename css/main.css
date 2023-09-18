@@ -176,17 +176,19 @@ body {
   float: right;
   -webkit-text-stroke: 1px black;
 }
-.galeryContener .fa-images::after {
-  content: "Galery";
-  font-size: 15px;
-  letter-spacing: 2px;
-  position: absolute;
-  top: 37px;
-  right: 90px;
-  opacity: 0;
-  text-shadow: 1px 1px 20px black;
-  transition: all ease 0.5s;
-  -webkit-text-stroke-width: 0;
+@media (min-width: 800px) {
+  .galeryContener .fa-images::after {
+    content: "Galery";
+    font-size: 15px;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 37px;
+    right: 90px;
+    opacity: 0;
+    text-shadow: 1px 1px 20px black;
+    transition: all ease 0.5s;
+    -webkit-text-stroke-width: 0;
+  }
 }
 .galeryContener .fa-images:hover {
   cursor: pointer;
@@ -203,17 +205,19 @@ body {
   padding-right: 45px;
   float: right;
 }
-.galeryContener .fa-xmark::after {
-  content: "Close";
-  font-size: 15px;
-  letter-spacing: 2px;
-  position: absolute;
-  top: 37px;
-  right: 90px;
-  opacity: 0;
-  text-shadow: 1px 1px 20px black;
-  transition: all ease 0.5s;
-  -webkit-text-stroke-width: 0;
+@media (min-width: 800px) {
+  .galeryContener .fa-xmark::after {
+    content: "Close";
+    font-size: 15px;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 37px;
+    right: 90px;
+    opacity: 0;
+    text-shadow: 1px 1px 20px black;
+    transition: all ease 0.5s;
+    -webkit-text-stroke-width: 0;
+  }
 }
 .galeryContener .fa-xmark:hover {
   cursor: pointer;
@@ -221,6 +225,39 @@ body {
 .galeryContener .fa-xmark:hover::after {
   transition: all ease 0.5s;
   opacity: 1;
+}
+.galeryContener .selectRoom {
+  display: none;
+  opacity: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.galeryContener .selectRoom h1 {
+  padding-top: 75px;
+  font-family: "robottoBold";
+  font-size: 26px;
+  margin-bottom: 50px;
+}
+.galeryContener .selectRoom ul {
+  list-style: none;
+  font-size: 19px;
+  font-family: "ubuntuLight";
+  line-height: 5rem;
+}
+.galeryContener .selectRoom ul li {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.galeryContener .selectRoom ul li i {
+  margin-right: 10px;
+}
+.galeryContener .selectRoom ul li:hover {
+  cursor: pointer;
+  margin-left: 15px;
 }
 .galeryContener .galery {
   display: none;
@@ -357,19 +394,21 @@ body {
   font-size: 30px;
   -webkit-text-stroke: black 1px;
 }
-.fa-dollar-sign::after {
-  transition: all ease 0.5s;
-  color: white;
-  opacity: 0;
-  content: "Reserve";
-  font-size: 15px;
-  position: absolute;
-  right: 90px;
-  -webkit-text-stroke-width: 0;
-  top: 6px;
-  letter-spacing: 1px;
-  font-weight: 900;
-  text-shadow: 1px 1px 20px black;
+@media (min-width: 800px) {
+  .fa-dollar-sign::after {
+    transition: all ease 0.5s;
+    color: white;
+    opacity: 0;
+    content: "Reserve";
+    font-size: 15px;
+    position: absolute;
+    right: 90px;
+    -webkit-text-stroke-width: 0;
+    top: 6px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-shadow: 1px 1px 20px black;
+  }
 }
 .fa-dollar-sign:hover {
   cursor: pointer;
@@ -377,6 +416,9 @@ body {
 .fa-dollar-sign:hover::after {
   transition: all ease 0.5s;
   opacity: 1;
+}
+.fa-dollar-sign:active::after {
+  opacity: 0;
 }
 @media (max-width: 770px) {
   .fa-dollar-sign {

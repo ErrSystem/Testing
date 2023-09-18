@@ -26,19 +26,21 @@ button.addEventListener('click', () => {
         document.querySelector('.mouseDown').style.filter = 'blur(5px)';
         button.style.color = 'black';
         button.className = "fa-solid fa-xmark";
-        document.querySelector('.galery').style.display = 'block';
+        document.querySelector('.selectRoom').style.display = 'block';
         document.querySelector('.fa-dollar-sign').style.display = 'none';
         setTimeout(() => {
-            document.querySelector('.galery').style.opacity = '1';
+            document.querySelector('.selectRoom').style.opacity = '1';
         }, 500);
         setTimeout(() => {
             galeryActive = true;
         }, 1000);
     } else {
         document.querySelector('.galery').style.opacity = '0';
+        document.querySelector('.selectRoom').style.opacity = '0';
         setTimeout(() => {
             document.querySelector('.fa-dollar-sign').style.display = 'block';
             document.querySelector('.galery').style = '';
+            document.querySelector('.selectRoom').style = '';
             document.querySelector('.galeryContener').style = '';
             document.querySelector('.mouseDown').style.filter = '';
             sliderContener.children[scrollIndex].style.filter = '';

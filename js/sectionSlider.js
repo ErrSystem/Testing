@@ -1,6 +1,7 @@
 // variables
 let scrollIndex = 0;
 let cooldown = true;
+let reserveButton = true;
 let touchStart;
 const sliderContener = document.querySelector('.slider');
 
@@ -61,6 +62,7 @@ const scrollUp = () => {
         scrollIndex--;
         document.querySelector('body').style.overflow = 'hidden';
         document.querySelector('.mouseDown').style.opacity = '1';
+        reserveButton = true;
     }
 }
 
@@ -133,7 +135,10 @@ window.addEventListener('touchend', () => {
 });
 document.querySelector('.mouseDown').addEventListener('click', scrollDown);
 document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
-    scrollDown(true);
+    if (reserveButton === true) {
+        scrollDown(true);
+        reserveButton = false;
+    }
 })
 // animation when website is loaded
 document.addEventListener('DOMContentLoaded', () => {

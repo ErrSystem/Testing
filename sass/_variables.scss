@@ -21,16 +21,18 @@ $fontWeights: (
     padding-right: 45px;
     float: right;
     &::after {
-        content: $state;
-        font-size: 15px;
-        letter-spacing: 2px;
-        position: absolute;
-        top: 37px;
-        right: 90px;
-        opacity: 0;
-        text-shadow: 1px 1px 20px black;
-        transition: all ease 0.5s;
-        -webkit-text-stroke-width: 0;
+        @media (min-width: 800px) {
+            content: $state;
+            font-size: 15px;
+            letter-spacing: 2px;
+            position: absolute;
+            top: 37px;
+            right: 90px;
+            opacity: 0;
+            text-shadow: 1px 1px 20px black;
+            transition: all ease 0.5s;
+            -webkit-text-stroke-width: 0;   
+        }
     }
     &:hover {
         cursor: pointer;
