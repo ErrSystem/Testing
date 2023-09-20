@@ -284,6 +284,15 @@ body {
   font-size: 26px;
   margin-bottom: 50px;
 }
+.galeryContener .galery .fa-angle-left {
+  position: absolute;
+  top: 3vh;
+  font-size: 25px;
+  left: 3vw;
+}
+.galeryContener .galery .fa-angle-left:hover {
+  cursor: pointer;
+}
 .galeryContener .galery .main {
   opacity: 0;
   width: 1030px;

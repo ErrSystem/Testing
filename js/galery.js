@@ -84,8 +84,29 @@ const showGalery = element => {
             document.querySelector('.galery .main').style.opacity = '1';
             document.querySelector('.galery ul').style.opacity = '1';
             document.querySelector('.galery ul').style.left = '48%';
-            document.querySelector('.galery').style.transition = 'all ease .5s';
+            document.querySelector('.galery').style.transition = 'all ease 0.5s';
         }, 200);
     }, 1000);
+}
+
+// return to select menu
+const returnSelect = () => {
+    document.querySelector('.galery ul').style.opacity = '0';
+    document.querySelector('.galery .main').style.opacity = '0';
+    setTimeout(() => {
+        document.querySelector('.galery').style = '';
+        document.querySelector('.galery').style.right = '100%';
+        document.querySelector('.galery').style.transition = 'none';
+        document.querySelector('.galery').style.display = 'block';
+        document.querySelector('.selectRoom').style.display = 'block';
+        document.querySelector('.selectRoom').style.opacity = '1';
+        setTimeout(() => {
+            document.querySelector('.galery').style = '';
+            document.querySelector('.galery .main').style = '';
+            document.querySelector('.galery ul').style = '';
+        }, 600);
+    }, 500);
 
 }
+
+document.querySelector('.fa-angle-left').addEventListener('click', returnSelect);
