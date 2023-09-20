@@ -245,6 +245,11 @@ body {
     font-size: 20px;
   }
 }
+@media (max-width: 300px) {
+  .galeryContener .selectRoom h1 {
+    font-size: 15px;
+  }
+}
 .galeryContener .selectRoom ul {
   list-style: none;
   font-size: 19px;
@@ -267,6 +272,11 @@ body {
   cursor: pointer;
   margin-left: 15px;
 }
+@media (max-width: 300px) {
+  .galeryContener .selectRoom ul li {
+    font-size: 16px;
+  }
+}
 .galeryContener .galery {
   transition: all ease 1s;
   display: none;
@@ -286,7 +296,7 @@ body {
 }
 .galeryContener .galery .fa-angle-left {
   position: absolute;
-  top: 3vh;
+  top: 4vh;
   font-size: 25px;
   left: 3vw;
 }

@@ -135,7 +135,8 @@ window.addEventListener('touchend', () => {
 });
 document.querySelector('.mouseDown').addEventListener('click', scrollDown);
 document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
-    if (reserveButton === true) {
+    if (reserveButton === true && scrollIndex != sliderContener.children.length - 4) {
+        console.log(scrollIndex, sliderContener.children.length - 4)
         scrollDown(true);
         reserveButton = false;
     }
