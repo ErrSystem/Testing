@@ -335,11 +335,9 @@ body {
   border-radius: 45px;
   cursor: pointer;
 }
-.galeryContener .galery ul .selectionned {
-  border: 4px solid white;
-}
-.galeryContener .galery ul .selectionned:hover {
-  width: 65px;
+.galeryContener .galery ul .selected {
+  border: 2px solid white;
+  width: 70px;
   border-radius: 35px;
 }
 @media (max-width: 1661px) {

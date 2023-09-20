@@ -243,12 +243,10 @@
                     cursor: pointer;
                 }
             }
-            .selectionned {
-                border: 4px solid white;
-                &:hover{
-                    width: 65px;
-                    border-radius: 35px;
-                }
+            .selected {
+                border: 2px solid white;
+                width: 70px;
+                border-radius: 35px;
             }
         }
 

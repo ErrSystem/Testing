@@ -52,6 +52,7 @@ button.addEventListener('click', () => {
             document.querySelector('.galery').style = '';
             document.querySelector('.galery .main').style = '';
             document.querySelector('.galery ul').style = '';
+            document.querySelector('.galery ul li .selected').classList.value = '';
         }, 500);
         setTimeout(() => {
             galeryActive = false;
@@ -63,10 +64,14 @@ button.addEventListener('click', () => {
 const showGalery = element => {
     const room = element.innerText;
     document.querySelector('.galery h1').innerText = room;
-    document.querySelector('.galery .main').src = `css/imgs/${room}/1.png`;
+    document.querySelector('.galery .main').src = `css/imgs/${room}/0.png`;
     const selectors = Array.from(document.querySelector('.galery ul').children);
     for (let i = 0; i < selectors.length; i++) {
-        selectors[i].src = `css/imgs/${room}/${i}.png`;
+        selectors[i].src = `css/imgs/${room}/min/${i}.png`;
+        selectors[i].addEventListener('click', () => selectorsFunc(selectors[i], room));
+        if (i == 0){
+            selectors[0].firstChild.classList.value = 'selected';
+        }
     }
     document.querySelector('.galery').style.display = 'block';
     for (let i = 100; -48 < i; i--) {
@@ -104,9 +109,16 @@ const returnSelect = () => {
             document.querySelector('.galery').style = '';
             document.querySelector('.galery .main').style = '';
             document.querySelector('.galery ul').style = '';
+            document.querySelector('.galery ul li .selected').classList.value = '';
         }, 600);
     }, 500);
 
 }
+
+const selectorsFunc = (element, room) => {
+    document.querySelector('.galery .main').src = `css/imgs/${room}/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    document.querySelector('.galery ul .selected').classList.value = '';
+    element.firstChild.classList.value = 'selected';
+} 
 
 document.querySelector('.fa-angle-left').addEventListener('click', returnSelect);
