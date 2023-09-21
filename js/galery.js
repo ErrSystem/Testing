@@ -1,6 +1,12 @@
 const button = document.querySelector('.fa-images');
 let galeryActive = false;
 Array.from(document.getElementsByClassName('galeryLink')).forEach(element => element.addEventListener('click', function(){showGalery(this)}));
+let mobile;
+if (window.screen.width <= 600) {
+    mobile = true;
+} else if (window.screen.width > 600) {
+    mobile = false;
+}
 
 // Open / Close animation
 button.addEventListener('click', () => {
@@ -64,7 +70,11 @@ button.addEventListener('click', () => {
 const showGalery = element => {
     const room = element.innerText;
     document.querySelector('.galery h1').innerText = room;
-    document.querySelector('.galery .main').src = `css/imgs/${room}/0.png`;
+    if (mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/0.png`;
+    } else if (!mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/0.png`;
+    }
     const selectors = Array.from(document.querySelector('.galery ul').children);
     for (let i = 0; i < selectors.length; i++) {
         selectors[i].src = `css/imgs/${room}/min/${i}.png`;
@@ -116,7 +126,11 @@ const returnSelect = () => {
 }
 
 const selectorsFunc = (element, room) => {
-    document.querySelector('.galery .main').src = `css/imgs/${room}/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    if (mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    } else if (!mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    }
     document.querySelector('.galery ul .selected').classList.value = '';
     element.firstChild.classList.value = 'selected';
 } 

@@ -340,7 +340,7 @@ body {
   width: 70px;
   border-radius: 35px;
 }
-@media (max-width: 1661px) {
+@media (max-width: 1660px) {
   .galeryContener .galery ul {
     bottom: 4%;
   }
