@@ -69,6 +69,7 @@ button.addEventListener('click', () => {
 // show galery func
 const showGalery = element => {
     const room = element.innerText;
+    customSelectorsPos();
     document.querySelector('.galery h1').innerText = room;
     if (mobile) {
         document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/0.png`;
@@ -104,6 +105,12 @@ const showGalery = element => {
     }, 1000);
 }
 
+const customSelectorsPos = () => {
+    const imgPos = document.querySelector('body').getBoundingClientRect().height / 2;
+    const bottomOfImg = 550 / 2;
+    document.querySelector('.galery ul').style.top = imgPos + bottomOfImg + 'px';
+}
+
 // return to select menu
 const returnSelect = () => {
     document.querySelector('.galery ul').style.opacity = '0';
@@ -136,3 +143,4 @@ const selectorsFunc = (element, room) => {
 } 
 
 document.querySelector('.fa-angle-left').addEventListener('click', returnSelect);
+window.addEventListener('resize', () => customSelectorsPos());
