@@ -93,6 +93,7 @@ const showGalery = element => {
         document.querySelector('.galery').style.position = 'initial';
         setTimeout(() => {
             document.querySelector('.galery .main').style.opacity = '1';
+            document.querySelector('.fa-expand').style.opacity = '1';
             document.querySelector('.galery ul').style.opacity = '1';
             document.querySelector('.galery ul').style.left = '48%';
             document.querySelector('.galery').style.transition = 'all ease 0.5s';
@@ -115,6 +116,7 @@ const selectorsFunc = (element, room) => {
 // return to select menu
 const returnSelect = () => {
     document.querySelector('.galery ul').style.opacity = '0';
+    document.querySelector('.fa-expand').style.opacity = '0';
     document.querySelector('.galery .main').style.opacity = '0';
     setTimeout(() => {
         document.querySelector('.galery').style.transition = 'none';

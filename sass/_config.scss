@@ -27,6 +27,12 @@ body {
     background-color: black;
 }
 
+.loadingAnim {
+    animation: LoadSkeleton 1s infinite;
+}
+
+
+/* Scroll Bar */
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -38,4 +44,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     transition: all ease .5s;
     background: gray; 
+}
+
+@keyframes LoadSkeleton {
+    0% {
+        background: hsla(0, 1%, 38%, 0.597);
+
+    } 100% {
+        background: hsl(200, 20%, 0);
+    }
 }
