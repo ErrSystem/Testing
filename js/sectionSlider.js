@@ -48,6 +48,11 @@ const scrollUp = (isButton) => {
     if (scrollIndex != 0) {
         const currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
+        if (scrollIndex == 6) {
+            document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
+            document.querySelector('.mouseDown').addEventListener('click', scrollDown);
+            document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
+        }
         if (isButton) {
             newSlide = sliderContener.children[0];
             scrollIndex = 0;

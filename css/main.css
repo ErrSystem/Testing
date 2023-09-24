@@ -171,6 +171,10 @@ body {
     font-size: 30px;
     -webkit-text-stroke: 1px white;
   }
+  .mouseDown .fa-arrow-up {
+    bottom: 10px;
+    animation: mouseUpMobile 3s infinite;
+  }
 }
 
 .galeryContener {
@@ -503,5 +507,16 @@ body {
   }
   100% {
     bottom: 100px;
+  }
+}
+@keyframes mouseUpMobile {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 25px;
+  }
+  100% {
+    bottom: 10px;
   }
 }/*# sourceMappingURL=main.css.map */
