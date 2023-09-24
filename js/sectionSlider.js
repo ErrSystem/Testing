@@ -44,10 +44,17 @@ const touchDetector = event => {
 }
 
 // functions
-const scrollUp = () => {
+const scrollUp = (isButton) => {
     if (scrollIndex != 0) {
-        const newSlide = sliderContener.children[scrollIndex-1];
         const currentSlide = sliderContener.children[scrollIndex];
+        let newSlide;
+        if (isButton) {
+            newSlide = sliderContener.children[0];
+            scrollIndex = 0;
+        } else {
+            newSlide = sliderContener.children[scrollIndex-1];
+            scrollIndex--;
+        }
         sliderContener.style.opacity = '0';
         setTimeout(() => {
             newSlide.className = `${newSlide.classList[0]}`;
@@ -59,7 +66,6 @@ const scrollUp = () => {
                 elementsFadeOut(currentSlide);
             }, 500);
         }, 250);
-        scrollIndex--;
         document.querySelector('body').style.overflow = 'hidden';
         document.querySelector('.mouseDown').style.opacity = '1';
         reserveButton = true;
@@ -89,9 +95,18 @@ const scrollDown = (isReserve) => {
             }, 500);
         }, 250);
         if (scrollIndex == sliderContener.children.length - 4){
-            document.querySelector('.mouseDown').style.opacity = '0';
+            document.querySelector('.fa-arrow-down').classList.value = 'fa-solid fa-arrow-up';
+            document.querySelector('.mouseDown').removeEventListener('click', scrollDown);
+            document.querySelector('.mouseDown').addEventListener('click', scrollToStart);
         }
     }
+
+}
+
+const scrollToStart = () => {
+    scrollUp(true);
+    document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
+    document.querySelector('.mouseDown').addEventListener('click', scrollDown);
 }
 
 // animations
@@ -102,7 +117,11 @@ const elementsFadeIn = section => {
         element.style.display = 'block';
         element.style.opacity = 1;
     });
-    section.children[1].children[0].style.paddingTop = '15vh';
+    if (mobile) {
+        section.children[1].children[0].style.paddingTop = '10vh';
+    } else if (!mobile) {
+        section.children[1].children[0].style.paddingTop = '15vh';
+    }
     section.children[1].children[0].style.marginBottom = '60px';
 }
 
@@ -136,7 +155,6 @@ window.addEventListener('touchend', () => {
 document.querySelector('.mouseDown').addEventListener('click', scrollDown);
 document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
     if (reserveButton === true && scrollIndex != sliderContener.children.length - 4) {
-        console.log(scrollIndex, sliderContener.children.length - 4)
         scrollDown(true);
         reserveButton = false;
     }

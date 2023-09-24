@@ -1,12 +1,6 @@
 const button = document.querySelector('.fa-images');
 let galeryActive = false;
 Array.from(document.getElementsByClassName('galeryLink')).forEach(element => element.addEventListener('click', function(){showGalery(this)}));
-let mobile;
-if (window.screen.width <= 600) {
-    mobile = true;
-} else if (window.screen.width > 600) {
-    mobile = false;
-}
 
 // Open / Close animation
 button.addEventListener('click', () => {
@@ -31,7 +25,7 @@ button.addEventListener('click', () => {
         }
         sliderContener.children[scrollIndex].style.filter = 'blur(5px)';
         document.querySelector('.mouseDown').style.filter = 'blur(5px)';
-        document.querySelector('.galeryContener').style.overflow = 'hidden';
+        document.querySelector('.galeryContener').style.overflowX = 'hidden';
         button.style.color = 'black';
         button.className = "fa-solid fa-xmark";
         document.querySelector('.selectRoom').style.display = 'block';
@@ -88,11 +82,10 @@ const showGalery = element => {
     for (let i = 100; -48 < i; i--) {
         setTimeout(() => {
             document.querySelector('.galery').style.right = `${i}%`;
-        }, 50);
+        }, 100);
     }
     setTimeout(() => {
         document.querySelector('.selectRoom').style.display = 'none';
-        document.querySelector('.selectRoom').style.opacity = '0';
         document.querySelector('.galery').style.transition = 'none';
         document.querySelector('.galery').style.transform = 'initial';
         document.querySelector('.galery').style.position = 'initial';
@@ -105,31 +98,57 @@ const showGalery = element => {
     }, 1000);
 }
 
+// return to select menu
+const returnSelect = () => {
+    document.querySelector('.galery ul').style.opacity = '0';
+    document.querySelector('.galery .main').style.opacity = '0';
+    setTimeout(() => {
+        document.querySelector('.galery').style.transition = 'none';
+        document.querySelector('.galery').style.position = 'absolute';
+        document.querySelector('.galery').style.transform = 'translate(-50%, -50%)';
+        setTimeout(() => {
+            document.querySelector('.galery').style.transition = 'all ease 0.8s';
+            document.querySelector('.selectRoom').style.display = 'block';
+            for (let i = -48; 100 > i; i++) {
+                setTimeout(() => {
+                    document.querySelector('.galery').style.right = `${i}%`;
+                }, 100);
+            }
+        }, 100);
+        setTimeout(() => {
+            document.querySelector('.galery').style.transition = 'none';
+            document.querySelector('.galery').style = '';
+            document.querySelector('.galery .main').style = '';
+            document.querySelector('.galery ul').style = '';
+            document.querySelector('.galery ul li .selected').classList.value = '';
+        }, 1000);
+    }, 500);
+
+}
+
+
+
+// make the selectors dynamic 
 const customSelectorsPos = () => {
     const imgPos = document.querySelector('body').getBoundingClientRect().height / 2;
     const bottomOfImg = 550 / 2;
     document.querySelector('.galery ul').style.top = imgPos + bottomOfImg + 'px';
 }
 
-// return to select menu
-const returnSelect = () => {
-    document.querySelector('.galery ul').style.opacity = '0';
-    document.querySelector('.galery .main').style.opacity = '0';
-    setTimeout(() => {
-        document.querySelector('.galery').style = '';
-        document.querySelector('.galery').style.right = '100%';
-        document.querySelector('.galery').style.transition = 'none';
-        document.querySelector('.galery').style.display = 'block';
-        document.querySelector('.selectRoom').style.display = 'block';
-        document.querySelector('.selectRoom').style.opacity = '1';
-        setTimeout(() => {
-            document.querySelector('.galery').style = '';
-            document.querySelector('.galery .main').style = '';
-            document.querySelector('.galery ul').style = '';
-            document.querySelector('.galery ul li .selected').classList.value = '';
-        }, 600);
-    }, 500);
-
+// make the resize icon dynamic
+const resizeIconPos = () => {
+    // right
+    const imgWidthPX = getComputedStyle(document.querySelector('.main')).width;
+    const imgWidth = parseInt(imgWidthPX.slice(0, imgWidthPX.indexOf('px')));
+    const windowWidth = document.querySelector('body').getBoundingClientRect().width;
+    const rightPos = (((windowWidth - imgWidth) / 2) + 20) + 'px';
+    document.querySelector('.fa-expand').style.right = rightPos;
+    // top
+    const imgHeightPX = getComputedStyle(document.querySelector('.main')).height;
+    const imgHeight = parseInt(imgHeightPX.slice(0, imgHeightPX.indexOf('px')));
+    const windowHeight = document.querySelector('body').getBoundingClientRect().height;
+    const topPos = (((windowHeight - imgHeight) / 2) - 30) + 'px';
+    document.querySelector('.fa-expand').style.top = topPos;
 }
 
 const selectorsFunc = (element, room) => {
@@ -144,3 +163,4 @@ const selectorsFunc = (element, room) => {
 
 document.querySelector('.fa-angle-left').addEventListener('click', returnSelect);
 window.addEventListener('resize', () => customSelectorsPos());
+document.addEventListener('DOMContentLoaded', () => resizeIconPos());

@@ -26,3 +26,16 @@ body {
     text-align: center;
     background-color: black;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: darkGray; 
+    transition: all ease .5s;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    transition: all ease .5s;
+    background: gray; 
+}
