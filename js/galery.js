@@ -64,12 +64,14 @@ button.addEventListener('click', () => {
 const showGalery = element => {
     const room = element.innerText;
     customSelectorsPos();
+    resizeIconPos();
     document.querySelector('.galery h1').innerText = room;
     if (mobile) {
         document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/0.png`;
     } else if (!mobile) {
         document.querySelector('.galery .main').src = `css/imgs/${room}/0.png`;
     }
+    resizeFunc();
     const selectors = Array.from(document.querySelector('.galery ul').children);
     for (let i = 0; i < selectors.length; i++) {
         selectors[i].src = `css/imgs/${room}/min/${i}.png`;
@@ -97,6 +99,18 @@ const showGalery = element => {
         }, 200);
     }, 1000);
 }
+
+// selectors func
+const selectorsFunc = (element, room) => {
+    if (mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    } else if (!mobile) {
+        document.querySelector('.galery .main').src = `css/imgs/${room}/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
+    }
+    document.querySelector('.galery ul .selected').classList.value = '';
+    element.firstChild.classList.value = 'selected';
+    resizeFunc();
+} 
 
 // return to select menu
 const returnSelect = () => {
@@ -126,7 +140,11 @@ const returnSelect = () => {
 
 }
 
-
+// resize function
+const resizeFunc = () => {
+    const src = document.querySelector('.main').src;
+    document.querySelector('.fa-expand').setAttribute('href', src);
+}
 
 // make the selectors dynamic 
 const customSelectorsPos = () => {
@@ -151,16 +169,6 @@ const resizeIconPos = () => {
     document.querySelector('.fa-expand').style.top = topPos;
 }
 
-const selectorsFunc = (element, room) => {
-    if (mobile) {
-        document.querySelector('.galery .main').src = `css/imgs/${room}/mobile/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
-    } else if (!mobile) {
-        document.querySelector('.galery .main').src = `css/imgs/${room}/${Array.from(document.querySelector('.galery ul').children).indexOf(element)}.png`;
-    }
-    document.querySelector('.galery ul .selected').classList.value = '';
-    element.firstChild.classList.value = 'selected';
-} 
-
 document.querySelector('.fa-angle-left').addEventListener('click', returnSelect);
 window.addEventListener('resize', () => customSelectorsPos());
-document.addEventListener('DOMContentLoaded', () => resizeIconPos());
+window.addEventListener('resize', () => resizeIconPos());

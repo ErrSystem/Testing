@@ -103,10 +103,12 @@ const scrollDown = (isReserve) => {
 
 }
 
+// scroll up button func
 const scrollToStart = () => {
     scrollUp(true);
     document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
     document.querySelector('.mouseDown').addEventListener('click', scrollDown);
+    document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
 }
 
 // animations

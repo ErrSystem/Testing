@@ -342,6 +342,7 @@ body {
   color: white;
   text-shadow: 1px 1px 10px black;
   -webkit-text-stroke: 1px black;
+  text-decoration: none;
 }
 .galeryContener .galery ul {
   opacity: 0;
