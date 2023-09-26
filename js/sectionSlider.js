@@ -94,11 +94,13 @@ const scrollUp = (isButton) => {
 
 const scrollDown = (isReserve) => {
     if (scrollIndex < sliderContener.children.length - 3 || scrollIndex == '1part2') {
-        const currentSlide = sliderContener.children[scrollIndex];
+        let currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
         if (isReserve === true) {
             newSlide = sliderContener.children[6];
             scrollIndex = 6;
+            elementsFadeIn(newSlide);
+            elementsFadeOut(currentSlide);
         } else if (scrollIndex == 1) {
             newSlide = sliderContener.children[scrollIndex];
             scrollIndex = '1part2';
@@ -115,17 +117,17 @@ const scrollDown = (isReserve) => {
             }, 500);
         } else {
             if (scrollIndex == '1part2') {
-                scrollIndex = 2;
-            } else {
-                scrollIndex++;
+                scrollIndex = 1;
+                currentSlide = sliderContener.children[scrollIndex];
             }
-            newSlide = sliderContener.children[scrollIndex];
+            newSlide = sliderContener.children[scrollIndex+1];
+            scrollIndex++;
             sliderContener.style.opacity = '0';
             setTimeout(() => {
-                sliderContener.style.opacity = 0; 
+                sliderContener.style.opacity = '0'; 
                 newSlide.className = `${newSlide.classList[0]}`;
                 currentSlide.className = `${currentSlide.classList[0]} hidden`;
-                sliderContener.style.opacity = 1; 
+                sliderContener.style.opacity = '1'; 
                 setTimeout(() => {
                     elementsFadeIn(newSlide);
                     elementsFadeOut(currentSlide);
