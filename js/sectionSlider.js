@@ -3,6 +3,7 @@ let scrollIndex = 0;
 let cooldown = true;
 let reserveButton = true;
 let touchStart;
+let originalTextTerrace = document.querySelector('.descSlide .content p').textContent;
 const sliderContener = document.querySelector('.slider');
 
 // detectors
@@ -56,53 +57,85 @@ const scrollUp = (isButton) => {
         if (isButton) {
             newSlide = sliderContener.children[0];
             scrollIndex = 0;
-        } else {
+        } else if (scrollIndex == '1part2') {
+            newSlide = sliderContener.children[scrollIndex-1];
+            scrollIndex = 1;
+            document.querySelector('#Terrace .content p').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.descSlide .content p').textContent = originalTextTerrace;
+                document.querySelector('.descSlide .content video').style = '';
+                document.querySelector('.descSlide .content h2').style.marginBottom = '45px';
+                setTimeout(() => {
+                    document.querySelector('.descSlide .content h2').style.marginBottom = '60px';
+                    document.querySelector('.descSlide .content p').style.opacity = '1';
+                }, 500);
+            }, 500);
+        } 
+        else {
             newSlide = sliderContener.children[scrollIndex-1];
             scrollIndex--;
-        }
-        sliderContener.style.opacity = '0';
-        setTimeout(() => {
-            newSlide.className = `${newSlide.classList[0]}`;
-            currentSlide.className = `${currentSlide.classList[0]} hidden`;
-            sliderContener.style.opacity = 0; 
-            sliderContener.style.animation = 'fadeIn 0.5s';
+            sliderContener.style.opacity = '0';
             setTimeout(() => {
-                elementsFadeIn(newSlide);
-                elementsFadeOut(currentSlide);
-            }, 500);
-        }, 250);
-        document.querySelector('body').style.overflow = 'hidden';
-        document.querySelector('.mouseDown').style.opacity = '1';
-        reserveButton = true;
+                newSlide.className = `${newSlide.classList[0]}`;
+                currentSlide.className = `${currentSlide.classList[0]} hidden`;
+                sliderContener.style.opacity = 0; 
+                sliderContener.style.animation = 'fadeIn 0.5s';
+                setTimeout(() => {
+                    elementsFadeIn(newSlide);
+                    elementsFadeOut(currentSlide);
+                }, 500);
+            }, 250);
+            document.querySelector('body').style.overflow = 'hidden';
+            document.querySelector('.mouseDown').style.opacity = '1';
+            reserveButton = true;
+        }
     }
 }
 
 const scrollDown = (isReserve) => {
-    if (scrollIndex < sliderContener.children.length - 3) {
+    if (scrollIndex < sliderContener.children.length - 3 || scrollIndex == '1part2') {
         const currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
         if (isReserve === true) {
             newSlide = sliderContener.children[6];
             scrollIndex = 6;
-        } else {
-            newSlide = sliderContener.children[scrollIndex+1];
-            scrollIndex++;
-        }
-        sliderContener.style.opacity = '0';
-        setTimeout(() => {
-            sliderContener.style.opacity = 0; 
-            newSlide.className = `${newSlide.classList[0]}`;
-            currentSlide.className = `${currentSlide.classList[0]} hidden`;
-            sliderContener.style.opacity = 1; 
+        } else if (scrollIndex == 1) {
+            newSlide = sliderContener.children[scrollIndex];
+            scrollIndex = '1part2';
+            document.querySelector('#Terrace .content p').style.opacity = '0';
             setTimeout(() => {
-                elementsFadeIn(newSlide);
-                elementsFadeOut(currentSlide);
+                document.querySelector('.descSlide .content p').textContent = "text text text can be like 'Beautiful and peaceful, wether during the day or at night, what better way to spend a pleasant holiday?'";
+                document.querySelector('.descSlide .content video').style.display = 'block';
+                document.querySelector('.descSlide .content h2').style.marginBottom = '45px';
+                setTimeout(() => {
+                    document.querySelector('.descSlide .content h2').style.marginBottom = '60px';
+                    document.querySelector('.descSlide .content p').style.opacity = '1';
+                    document.querySelector('.descSlide .content video').style.opacity = '1';
+                }, 500);
             }, 500);
-        }, 250);
-        if (scrollIndex == sliderContener.children.length - 4){
-            document.querySelector('.fa-arrow-down').classList.value = 'fa-solid fa-arrow-up';
-            document.querySelector('.mouseDown').removeEventListener('click', scrollDown);
-            document.querySelector('.mouseDown').addEventListener('click', scrollToStart);
+        } else {
+            if (scrollIndex == '1part2') {
+                scrollIndex = 2;
+            } else {
+                scrollIndex++;
+            }
+            newSlide = sliderContener.children[scrollIndex];
+            sliderContener.style.opacity = '0';
+            setTimeout(() => {
+                sliderContener.style.opacity = 0; 
+                newSlide.className = `${newSlide.classList[0]}`;
+                currentSlide.className = `${currentSlide.classList[0]} hidden`;
+                sliderContener.style.opacity = 1; 
+                setTimeout(() => {
+                    elementsFadeIn(newSlide);
+                    elementsFadeOut(currentSlide);
+                }, 500);
+            }, 250);
+            if (scrollIndex == sliderContener.children.length - 4){
+                document.querySelector('.fa-arrow-down').classList.value = 'fa-solid fa-arrow-up';
+                document.querySelector('.mouseDown').removeEventListener('click', scrollDown);
+                document.querySelector('.mouseDown').addEventListener('click', scrollToStart);
+            }
         }
     }
 

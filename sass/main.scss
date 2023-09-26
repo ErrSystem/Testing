@@ -48,6 +48,20 @@
     }
 }
 
+#terraceVideo {
+    display: none;
+    opacity: 0;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 60px;
+    border-radius: 3px;
+    border: white 2px solid;
+    box-shadow: 1px 1px 20px black;
+    @include mobile() {
+        width: 350px;
+    }
+}
+
 .reservation {
     img {
         width: 100vw;
