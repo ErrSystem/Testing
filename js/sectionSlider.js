@@ -49,15 +49,7 @@ const scrollUp = (isButton) => {
     if (scrollIndex != 0) {
         const currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
-        if (scrollIndex == 6) {
-            document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
-            document.querySelector('.mouseDown').addEventListener('click', scrollDown);
-            document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
-        }
-        if (isButton) {
-            newSlide = sliderContener.children[0];
-            scrollIndex = 0;
-        } else if (scrollIndex == '1part2') {
+        if (scrollIndex == '1part2') {
             newSlide = sliderContener.children[scrollIndex-1];
             scrollIndex = 1;
             document.querySelector('#Terrace .content p').style.opacity = '0';
@@ -72,8 +64,17 @@ const scrollUp = (isButton) => {
             }, 500);
         } 
         else {
-            newSlide = sliderContener.children[scrollIndex-1];
             scrollIndex--;
+            newSlide = sliderContener.children[scrollIndex];
+            if (isButton === true) {
+                newSlide = sliderContener.children[0];
+                scrollIndex = 0;
+            }
+            else if (scrollIndex == 5) {
+                document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
+                document.querySelector('.mouseDown').addEventListener('click', scrollDown);
+                document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
+            }
             sliderContener.style.opacity = '0';
             setTimeout(() => {
                 newSlide.className = `${newSlide.classList[0]}`;
@@ -96,12 +97,7 @@ const scrollDown = (isReserve) => {
     if (scrollIndex < sliderContener.children.length - 3 || scrollIndex == '1part2') {
         let currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
-        if (isReserve === true) {
-            newSlide = sliderContener.children[6];
-            scrollIndex = 6;
-            elementsFadeIn(newSlide);
-            elementsFadeOut(currentSlide);
-        } else if (scrollIndex == 1) {
+        if (scrollIndex == 1) {
             newSlide = sliderContener.children[scrollIndex];
             scrollIndex = '1part2';
             document.querySelector('#Terrace .content p').style.opacity = '0';
@@ -116,17 +112,26 @@ const scrollDown = (isReserve) => {
                 }, 500);
             }, 500);
         } else {
-            if (scrollIndex == '1part2') {
-                scrollIndex = 1;
-                currentSlide = sliderContener.children[scrollIndex];
+            if (isReserve === true) {
+                newSlide = sliderContener.children[6];
+                if (scrollIndex == '1part2') {
+                    currentSlide = sliderContener.children[1];
+                }
+                scrollIndex = 6;
             }
-            newSlide = sliderContener.children[scrollIndex+1];
-            scrollIndex++;
+            else if (scrollIndex == '1part2') {
+                scrollIndex = 2;
+                currentSlide = sliderContener.children[scrollIndex-1]
+                newSlide = sliderContener.children[scrollIndex];
+            } else {
+                newSlide = sliderContener.children[scrollIndex+1];
+                scrollIndex++;
+            }
             sliderContener.style.opacity = '0';
             setTimeout(() => {
                 sliderContener.style.opacity = '0'; 
                 newSlide.className = `${newSlide.classList[0]}`;
-                currentSlide.className = `${currentSlide.classList[0]} hidden`;
+                currentSlide.classList.value = `${currentSlide.classList[0]} hidden`;
                 sliderContener.style.opacity = '1'; 
                 setTimeout(() => {
                     elementsFadeIn(newSlide);
@@ -145,10 +150,10 @@ const scrollDown = (isReserve) => {
 
 // scroll up button func
 const scrollToStart = () => {
+    document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
     scrollUp(true);
     document.querySelector('.mouseDown').removeEventListener('click', scrollToStart);
     document.querySelector('.mouseDown').addEventListener('click', scrollDown);
-    document.querySelector('.fa-arrow-up').classList.value = 'fa-solid fa-arrow-down';
 }
 
 // animations
