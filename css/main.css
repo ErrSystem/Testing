@@ -82,6 +82,25 @@ body {
   width: 100px;
 }
 
+.warnWeakInternet {
+  display: none;
+  opacity: 0;
+  background-color: white;
+  height: 35px;
+  padding-top: 7px;
+}
+.warnWeakInternet p {
+  display: inline;
+  margin-left: 5px;
+  font-family: ubuntuLight;
+  font-size: 15px;
+}
+.warnWeakInternet i {
+  color: yellow;
+  text-shadow: 1px 1px 20px black;
+  -webkit-text-stroke: 0.8px black;
+}
+
 .welcomeSlide {
   height: 100vh;
 }
