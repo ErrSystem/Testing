@@ -123,6 +123,9 @@ const scrollDown = (isReserve) => {
                 scrollIndex = 2;
                 currentSlide = sliderContener.children[scrollIndex-1]
                 newSlide = sliderContener.children[scrollIndex];
+                setTimeout(() => {
+                    document.querySelector('.descSlide .content p').textContent = originalTextTerrace;
+                }, 500);
             } else {
                 newSlide = sliderContener.children[scrollIndex+1];
                 scrollIndex++;
@@ -206,8 +209,16 @@ document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
         reserveButton = false;
     }
 })
-// animation when website is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // check internet speed
+    console.log(document.querySelector('.welcomeSlide video').loaded);
+    setTimeout(() => {
+        if (!document.querySelector('.welcomeSlide video').loaded) {
+            document.querySelector('.warnWeakInternet').style.display = 'block';
+            document.querySelector('.warnWeakInternet').style.opacity = '1';
+        }
+    }, 2000);
+    // animation when website is loaded
     setTimeout(() => {
         elementsFadeIn(document.querySelector('.welcomeSlide'));
     }, 1000);
