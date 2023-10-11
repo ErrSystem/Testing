@@ -210,14 +210,6 @@ document.querySelector('.fa-dollar-sign').addEventListener('click', () => {
     }
 })
 document.addEventListener('DOMContentLoaded', () => {
-    // check internet speed
-    console.log(document.querySelector('.welcomeSlide video').loaded);
-    setTimeout(() => {
-        if (!document.querySelector('.welcomeSlide video').loaded) {
-            document.querySelector('.warnWeakInternet').style.display = 'block';
-            document.querySelector('.warnWeakInternet').style.opacity = '1';
-        }
-    }, 2000);
     // animation when website is loaded
     setTimeout(() => {
         elementsFadeIn(document.querySelector('.welcomeSlide'));

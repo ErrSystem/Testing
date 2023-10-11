@@ -96,8 +96,9 @@ body {
   font-size: 15px;
 }
 .warnWeakInternet i {
-  color: yellow;
-  text-shadow: 1px 1px 20px black;
+  font-size: 18px;
+  color: #e7886a;
+  text-shadow: 1px 1px 33px black;
   -webkit-text-stroke: 0.8px black;
 }
 
