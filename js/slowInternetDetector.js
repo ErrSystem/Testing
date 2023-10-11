@@ -1,14 +1,16 @@
 let time = 0;
 let stillCounting = true;
 
-for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    
-}
+setInterval(() => {
+    if (stillCounting === true){
+        time++;
+    }
+}, 100);
 
-document.querySelector('.welcomeSlide video').addEventListener('onload', () => {
+document.querySelector('.welcomeSlide video').addEventListener('loadeddata', () => {
+    console.log(time)
     stillCounting = false;
-    if (time > 1000) {
+    if (time >= 10) {
         document.querySelector('.warnWeakInternet').style.display = 'block';
         document.querySelector('.warnWeakInternet').style.opacity = '1';
     }

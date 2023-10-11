@@ -97,7 +97,7 @@ const scrollDown = (isReserve) => {
     if (scrollIndex < sliderContener.children.length - 3 || scrollIndex == '1part2') {
         let currentSlide = sliderContener.children[scrollIndex];
         let newSlide;
-        if (scrollIndex == 1) {
+        if (scrollIndex == 1 & !isReserve) {
             newSlide = sliderContener.children[scrollIndex];
             scrollIndex = '1part2';
             document.querySelector('#Terrace .content p').style.opacity = '0';

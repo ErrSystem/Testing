@@ -23,12 +23,18 @@
         margin-left: 5px;
         font-family: ubuntuLight;
         font-size: 15px;
+        @include mobile() {
+            font-size: 12px;
+        }
     }
     i {
         font-size: 18px;
         color: #e7886a;
         text-shadow: 1px 1px 33px black;
         -webkit-text-stroke: 0.8px black;
+        @include mobile() {
+            font-size: 15px;
+        }
     }
 }
 
