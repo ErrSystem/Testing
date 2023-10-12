@@ -88,6 +88,11 @@ body {
   background-color: white;
   height: 35px;
   padding-top: 7px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100vw;
 }
 .warnWeakInternet p {
   display: inline;
@@ -161,7 +166,7 @@ body {
 }
 @media (max-width: 770px) {
   #terraceVideo {
-    width: 350px;
+    width: 310px;
   }
 }
 

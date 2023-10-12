@@ -18,6 +18,11 @@
     background-color: white;
     height: 35px;
     padding-top: 7px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 100vw;
     p {
         display: inline;
         margin-left: 5px;
@@ -84,7 +89,7 @@
     border: white 2px solid;
     box-shadow: 1px 1px 20px black;
     @include mobile() {
-        width: 350px;
+        width: 310px;
     }
 }
 
