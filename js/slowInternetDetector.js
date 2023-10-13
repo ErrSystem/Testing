@@ -1,11 +1,13 @@
 let time = 0;
 let stillCounting = true;
 
-setInterval(() => {
+const addTimeToSpeedChecker = () => {
     if (stillCounting){
         time++;
     }
-}, 100);
+}
+
+setInterval(addTimeToSpeedChecker(), 100);
 
 document.querySelector('.welcomeSlide video').addEventListener('loadeddata', () => {
     if (stillCounting) {
@@ -18,4 +20,5 @@ document.querySelector('.welcomeSlide video').addEventListener('loadeddata', () 
             document.querySelector('.warnWeakInternet').style.opacity = '0';
         }
     }
+    clearInterval(addTimeToSpeedChecker())
 })
