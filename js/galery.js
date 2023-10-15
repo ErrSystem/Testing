@@ -52,6 +52,7 @@ button.addEventListener('click', () => {
             document.querySelector('.galery').style = '';
             document.querySelector('.galery .main').style = '';
             document.querySelector('.galery ul').style = '';
+            document.querySelector('.fa-expand').style = '';
             document.querySelector('.galery ul li .selected').classList.value = '';
         }, 500);
         setTimeout(() => {
@@ -135,6 +136,7 @@ const returnSelect = () => {
             document.querySelector('.galery').style.transition = 'none';
             document.querySelector('.galery').style = '';
             document.querySelector('.galery .main').style = '';
+            document.querySelector('.fa-expand').style = '';
             document.querySelector('.galery ul').style = '';
             document.querySelector('.galery ul li .selected').classList.value = '';
         }, 1000);
